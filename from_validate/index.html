@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>from_commit</title>
+</head>
+
+<body>
+    <form action="https://www.baidu.com" class="form" name="myform">
+        <div>
+            <label for="name">姓名：</label>
+            <input type="text" name="name" placeholder="姓名" id="name" />
+
+        </div>
+
+        <div>
+            <label for="pwd">密码:</label>
+            <input type="password" placeholder="密码" id="pwd" />
+
+        </div>
+        <div>
+            <label for="repwd">确认密码:</label>
+            <input type="password" placeholder="确认密码" id="repwd" />
+
+        </div>
+        <div>
+            <label for="sex">性别:</label>
+            <lable for="nan">男</lable>
+            <input type="radio" name="sex" id="nan" value="男" />
+            <lable for="nv">女</lable>
+            <input type="radio" name="sex" id="nv" value="女" />
+
+        </div>
+        <div>
+            <label for="hobby">爱好:</label>
+            <select name="hobby" id="hobby">
+                <option value="dog">狗</option>
+                <option value="cat" selected>猫</option>
+            </select>
+
+        </div>
+        <div>
+            <input type="checkbox" id="lq" />
+            <label for="lq">篮球</label>
+            <input type="checkbox" id="zq" />
+            <label for="zq">足球</label>
+
+        </div>
+
+        <button type="submit" style="background: #277df6; border: #277df6;">提交</button>
+    </form>
+    <div class="preson" style="background: pink;">
+        <span>用户名为：123</span>
+        <span>密码为：123</span>
+        <span>性别为：123</span>
+        <span>爱好为：123</span>
+        <span>兴趣为：123</span>
+    </div>
+
+    <script>
+        const form = document.forms.myform /*获取表单里  name为：myform的值*/
+        console.log(form);
+        const hobby = form.hobby.value;
+        console.log(hobby);
+        form.addEventListener('submit', function(event) {
+            console.log("提交了");
+            //阻止form表单默认的特点，事件
+            event.preventDefault();
+            const username = form.name.value;
+            const pwd = form.pwd.value;
+            const repwd = form.repwd.value;
+            const sex = form.sex.value;
+            const hobby = form.hobby.value;
+            if (username.trim().length === 0) {
+                alert("用户名不能为空")
+                return;
+            } else if (pwd.trim() !== repwd.trim()) {
+                alert("两次密码不一致")
+                return;
+            } else {
+                const div = document.createElement('div');
+                div.innerHTML = `   
+            <span>用户名为：${username}</span>
+            <span>密码为：${pwd}</span>
+            <span>性别为：${sex}</span>
+            <span>爱好为：${hobby}</span>
+            <span>兴趣为：${hobby}</span>`
+                document.querySelector('.preson').appendChild(div);
+                // document.body.appendChild(div);
+                alert("提交成功")
+                return;
+            }
+
+        })
+    </script>
+</body>
+
+</html>
