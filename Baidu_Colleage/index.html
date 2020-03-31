@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学校地图展示</title>
+    <script type="text/javascript" src="https://api.map.baidu.com/getscript?v=2.0&ak=e3UMOvcLTdBS4mgywsKwYSsef3HlfLUY"></script>
+    <script type="text/javascript" charset="utf-8" src="https://api.map.baidu.com/?qt=verify&ak=e3UMOvcLTdBS4mgywsKwYSsef3HlfLUY&callback=BMap._rd._cbk2031"></script>
+
+    <script type="text/javascript" charset="utf-8" src="https://api0.map.bdimg.com/getmodules?v=2.0&t=20140707&mod=map_1ctnlt,scommon_0mhtzu,mapclick_idvstn,oppc_ohwi5e,local_xjnu5v"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #map {
+            width: 100vw;
+            /*vh是相对于视口的高度。视口被均分为100单位的vh
+                vw是相对于视口的宽度。视口被均分为100单位的vw */
+            height: 100vh;
+        }
+        
+        .suggestion {
+            position: absolute;
+            top: 0;
+            right: 10vw;
+            width: 10vw;
+            height: 10vh;
+            background-color: pink;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="map"></div>
+    <div class="suggestion">
+        <div id="r-result">
+            请输入：<input type="text" id="suggestion" />
+        </div>
+    </div>
+    <script>
+        window.onload = function() {
+
+            var map = new BMap.Map('map');
+            map.centerAndZoom('东华理工大学南昌校区', 20)
+        }
+    </script>
+</body>
+
+</html>

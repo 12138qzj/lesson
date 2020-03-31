@@ -1,0 +1,69 @@
+.cat {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+}
+
+.body {
+    position: absolute;
+    z-index: 2;
+    width: 117px;
+    height: 201px;
+    /*现对于自己的宽高计算 来调整自己的位置*/
+    /*定位  将盒子里面的东西
+    中心和父级盒子的中心 合并*/
+    transform: translate3d(-50%, -50%, 0);
+    background: url("../maoshenti.png");
+}
+
+.weiba {
+    position: absolute;
+    top: -285px;
+    left: -64px;
+    width: 64px;
+    height: 196px;
+    background: url("../maowei.png");
+    animation: ani 3s ease-in-out infinite alternate;
+    /* iteration-count direction fill-mode*/
+    transform-origin: 100% 100%;
+}
+
+.maozhua {
+    position: absolute;
+    z-index: 1;
+    left: 13px;
+    top: 71px;
+    width: 34px;
+    height: 81px;
+    background: url("../maozhua.png") no-repeat;
+    animation: ani 3s ease-in-out infinite alternate;
+    transform-origin: -100% -100%;
+}
+
+.maoyan1 {
+    position: absolute;
+    z-index: 3;
+    left: 9px;
+    top: 81px;
+    width: 2px;
+    height: 2px;
+    background: url("../maoyan1.png") no-repeat;
+}
+
+.maoyan2 {
+    position: absolute;
+    z-index: 3;
+    left: 33px;
+    top: 79px;
+    width: 2px;
+    height: 2px;
+    background: url("../maoyan2.png") no-repeat;
+}
+
+@keyframes ani {
+    100% {
+        transform: rotate(-5deg);
+        /*deg  度数单位*/
+    }
+}
