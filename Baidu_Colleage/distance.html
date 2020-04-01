@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size:100px">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=0.5,maximum-scale=0.5, minimum-scale=0.5,width=device-width, height=device-height, user-scalable=no">
+    <title>Document</title>
+    <!-- sdk -->
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=e3UMOvcLTdBS4mgywsKwYSsef3HlfLUY"></script>
+    <link rel="stylesheet" href="./css/item.css" />
+</head>
+
+<body>
+    <!-- html  +   css -->
+    <!-- 附近的商家 info  -->
+    <div class="shop-list">
+        <div class="poi-item-wrapper">
+            <div class="poi-info-wrapper">
+                <div class="image-wrapper">
+                    <div class="imgbox">
+                        <img src="http://p0.meituan.net/deal/__45899142__3351739.jpg@320w_320h_1e_1c" alt="">
+                    </div>
+                </div>
+
+                <div class="poi-info">
+                    <div class="poi-name"></div>
+                    <div class="price-wrapper">
+                        <div class="stars">
+                            <i><img src="./image/五角星.png"></i>
+                            <i><img src="./image/五角星.png"></i>
+                            <i><img src="./image/五角星.png"></i>
+                            <i><img src="./image/五角星.png"></i>
+                            <i><img src="./image/五角星灰.png"></i>
+                        </div>
+                        <div class="price">
+
+                        </div>
+                        <div class="location"></div>
+                    </div>
+                    <div class="cate-wrapper">
+                        <span class="catename"></span>
+                    </div>
+                    <div class="server-tags">
+                        <span class="server-tag"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="deal-info-wrapper">
+            <div class="preferential">
+                <div class="promotion-wrapper">
+                    <span class="promotion">
+                        立减17.9
+                    </span>
+                </div>
+                <img class="icon" src="http://p1.meituan.net/codeman/93231059874052e97c0976c8a6e30dbe910.png">
+                <span class="content">15.9元鸡肉卷单人餐，25.9元单人餐，27.8元童子鸡套餐</span>
+            </div>
+        </div>
+    </div>
+    <!-- <div id="map"></div> -->
+    <script>
+        // 1. 距离
+        // 2. 点 经纬度
+        // 115.941546,28.544622
+        // 命名规范
+
+
+        const myLatitude = '27.6946090000',
+            myLongitude = '113.7365660000',
+            kfcLatitude = '27.6916460000',
+            kfcLongitude = '113.7379400000';
+
+        // sdk 有点大， 他在远方
+        // js 事件机制
+        window.onload = function() {
+
+            function parseDistance(distance) {
+                //  如果> 1000米 返回  4.1km
+                // 否则 整数  936m
+                if (distance < 1000) {
+                    return parseInt(distance) + "m";
+                } else {
+                    return (distance / 1000).toFixed(1) + "km";
+                }
+            }
+
+            //  开始我们的js 编程
+            const map = new BMap.Map(); //实例化地图
+
+
+            //两点距离
+            const myPoint = new BMap.Point(myLongitude, myLatitude);
+            const kfcPoint = new BMap.Point(kfcLongitude, kfcLatitude);
+            const distance = parseDistance(
+                // 925.1111
+                map.getDistance(myPoint, kfcPoint)
+            ); // Number
+            // console.log(distance);
+            document.querySelector('.poi-name').innerHTML = '欢乐季(湘东店)';
+            document.querySelector('.location').innerHTML = distance;
+            document.querySelector('.imgbox img').src =
+                "https:////p1.meituan.net/bbia/548e825cf678a30671d95708e3c7f3be174470.png@320w_320h_1e_1c"
+            document.querySelector('.price').innerHTML = '￥27/人';
+            document.querySelector('.catename').innerHTML = '快递简餐';
+            document.querySelector('.server-tag').innerHTML = "支持外卖"
+        }
+    </script>
+</body>
+
+</html>
