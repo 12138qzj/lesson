@@ -1,0 +1,272 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: pink;
+    /*#78e08f; */
+}
+
+.container {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 232px;
+    /* margin-left: -116px; */
+    /* transform: translate(-50%, -50%);*/
+    /*两个盒子之间  默认会有空隙  两个盒子之间  换行产生空隙*/
+    font-size: 0;
+    /* white-space: nowrap; */
+    transform: translate(-50%, -50%);
+    background-color: white;
+}
+
+.ball {
+    position: relative;
+    margin: 0;
+    border: 8px solid black;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: inline-block;
+    /*据头部对齐*/
+    vertical-align: top;
+}
+
+.ball1 {
+    position: relative;
+    margin: 0;
+    border: 8px solid black;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: inline-block;
+    /*据头部对齐*/
+    vertical-align: top;
+}
+
+.face {
+    width: 70px;
+    height: 30px;
+    position: absolute;
+    right: 0;
+    top: 30px;
+    background-color: #fff;
+    border-top-right-radius: 15px;
+}
+
+.eye {
+    width: 15px;
+    height: 14px;
+    border-radius: 50%;
+    border-bottom: 5px solid #000;
+    /*给圆 加一个下边款*/
+    position: absolute;
+}
+
+.eye-l {
+    left: 10px;
+    /*合并兄弟级元素的 定位*/
+}
+
+.eye-r {
+    right: 5px;
+}
+
+.mouth {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    margin: 0 auto;
+    width: 30px;
+    height: 14px;
+    border-radius: 50%;
+    border-bottom: 5px solid black;
+    transform: translate(5px);
+}
+
+.face::before {
+    content: "";
+    width: 18px;
+    height: 8px;
+    background-color: #badc58;
+    position: absolute;
+    right: -8px;
+    top: 20px;
+    border-radius: 50%;
+}
+
+.face::after {
+    content: "";
+    width: 18px;
+    height: 8px;
+    background-color: #badc58;
+    position: absolute;
+    left: -5px;
+    top: 20px;
+    border-radius: 50%;
+}
+
+.face-right {
+    left: 0;
+    top: 37px;
+}
+
+.eye-l-p {
+    border-top: 5px solid black;
+    border-bottom: 0;
+}
+
+.eye-r-p {
+    border-top: 5px solid black;
+    border-bottom: 0;
+}
+
+.face-right::before {
+    width: 10px;
+    height: 10px;
+    right: -4px;
+}
+
+.face-right::after {
+    width: 10px;
+    height: 10px;
+    left: 5px;
+}
+
+.kiss-m {
+    position: absolute;
+    left: -2px;
+    top: 6px;
+    /* display: none;*/
+    opacity: 0;
+    /*透明度 为0  看不见*/
+    animation: kiss-m-r 4s ease infinite;
+}
+
+.kiss {
+    width: 13px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    border-left: 5px solid #000;
+}
+
+.face-left {
+    animation: face 4s ease infinite;
+}
+
+#l-ball {
+    animation: close 4s ease infinite;
+    z-index: 50;
+}
+
+#r-ball {
+    animation: kiss 4s ease infinite;
+}
+
+.mouth-r {
+    animation: mouth 4s ease infinite;
+}
+
+@keyframes face {
+    0% {
+        transform: translate(0) rotate(0)
+    }
+    10% {
+        transform: translate(0) rotate(0);
+    }
+    20% {
+        transform: translateX(5px) rotate(-2deg);
+    }
+    28% {
+        transform: translate(0px) rotate(0);
+    }
+    35% {
+        transform: translateX(5px) rotate(-2deg);
+    }
+    50% {
+        transform: translate(0) rotate(0);
+    }
+    100% {
+        transform: translate(0) rotate(0);
+    }
+}
+
+@keyframes close {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(20px);
+    }
+    35% {
+        transform: translate(20px);
+    }
+    55% {
+        transform: translate(0);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes kiss-m-r {
+    0% {
+        opacity: 0;
+    }
+    60% {
+        opacity: 0;
+    }
+    60.1% {
+        opacity: 1;
+    }
+    67% {
+        opacity: 1;
+    }
+    67.1% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes kiss {
+    40% {
+        transform: translate(0);
+    }
+    50% {
+        transform: translate(30px) rotate(20deg);
+    }
+    60% {
+        transform: translate(-33px);
+    }
+    67% {
+        transform: translate(-33px);
+    }
+    77% {
+        transform: translate(0);
+    }
+}
+
+@keyframes mouth {
+    0% {}
+    55% {
+        border-bottom: 5px solid black;
+    }
+    55.1% {
+        border-bottom: 0;
+    }
+    67% {
+        border-bottom: 0;
+    }
+    67.1% {
+        border-bottom: 5px solid black;
+    }
+}
