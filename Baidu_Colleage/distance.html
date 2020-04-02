@@ -14,7 +14,7 @@
     <!-- html  +   css -->
     <!-- 附近的商家 info  -->
     <div class="shop-list">
-        <div class="poi-item-wrapper">
+        <!-- <div class="poi-item-wrapper">
             <div class="poi-info-wrapper">
                 <div class="image-wrapper">
                     <div class="imgbox">
@@ -58,7 +58,7 @@
                 <img class="icon" src="http://p1.meituan.net/codeman/93231059874052e97c0976c8a6e30dbe910.png">
                 <span class="content">15.9元鸡肉卷单人餐，25.9元单人餐，27.8元童子鸡套餐</span>
             </div>
-        </div>
+        </div> -->
     </div>
     <!-- <div id="map"></div> -->
     <script>
@@ -69,13 +69,40 @@
 
 
         const myLatitude = '27.6946090000',
-            myLongitude = '113.7365660000',
-            kfcLatitude = '27.6916460000',
-            kfcLongitude = '113.7379400000';
+            myLongitude = '113.7365660000';
 
+
+        const shopinfo = [{
+            name: '肯德基(莲塘店)',
+            pos: [27.6466227000, 113.7407508100],
+            logo: 'https://img.meituan.net/600.600/msmerchant/35131b2532bb752cc98ca83a95bdadcf127544.jpg@220w_125h_1e_1c',
+            price: '￥15/人',
+            catename: '快递简餐',
+            server: '支持外卖',
+            evaluate: 3
+
+
+        }, {
+            name: '欢乐季(湘东店)',
+            pos: [113.7379400000, 27.6916460000],
+            logo: 'https:////p1.meituan.net/bbia/548e825cf678a30671d95708e3c7f3be174470.png@320w_320h_1e_1c',
+            price: '￥27/人',
+            catename: '快递简餐',
+            server: '支持外卖',
+            evaluate: 4
+        }, {
+            name: '莲塘老鸭子店',
+            pos: [115.933514, 28.554123],
+            logo: 'http://p0.meituan.net/deal/__45899142__3351739.jpg@320w_320h_1e_1c',
+            price: '￥14/人',
+            catename: '快递简餐',
+            server: '支持外卖',
+            evaluate: 5
+        }];
         // sdk 有点大， 他在远方
         // js 事件机制
         window.onload = function() {
+            const shopContainer = document.querySelector('.shop-list');
 
             function parseDistance(distance) {
                 //  如果> 1000米 返回  4.1km
@@ -87,25 +114,99 @@
                 }
             }
 
-            //  开始我们的js 编程
             const map = new BMap.Map(); //实例化地图
 
 
             //两点距离
             const myPoint = new BMap.Point(myLongitude, myLatitude);
-            const kfcPoint = new BMap.Point(kfcLongitude, kfcLatitude);
-            const distance = parseDistance(
-                // 925.1111
-                map.getDistance(myPoint, kfcPoint)
-            ); // Number
+            //const kfcPoint = new BMap.Point(kfcLongitude, kfcLatitude);
+
+            for (var i = 0; i < shopinfo.length; i++) {
+                const endPoint = new BMap.Point(shopinfo[i].pos[0], shopinfo[i].pos[1]);
+                const distance = parseDistance(
+                    map.getDistance(myPoint, endPoint)
+                ); // Number
+
+                shopContainer.innerHTML += `
+            <div class="poi-item-wrapper">
+                <div class="poi-info-wrapper">
+                    <div class="image-wrapper">
+                        <div class="imgbox">
+                            <img src="${shopinfo[i].logo}" alt="">
+                        </div>
+                    </div>
+                    <div class="poi-info">
+                        <div class="poi-name">
+                            ${shopinfo[i].name}
+                        </div>
+                        
+                        <div class="price-wrapper">
+                                <div class="stars">
+                    ` + stars(shopinfo[i].evaluate) + `
+                                </div>
+                            <div class="price">
+                                ${shopinfo[i].price}
+                            </div>
+                            <div class="location">
+                                 ${distance}
+                            </div>
+                        </div>
+
+                        <div class="cate-wrapper">
+                            <span class="catename">${shopinfo[i].catename}</span>
+                        </div>
+                        <div class="server-tags">
+                            <span class="server-tag">${shopinfo[i].server}</span>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="deal-info-wrapper">
+                    <div class="preferential">
+                        <div class="promotion-wrapper">
+                            <span class="promotion">
+                                立减17.9
+                            </span>
+                        </div>
+                        <img class="icon" src="http://p1.meituan.net/codeman/93231059874052e97c0976c8a6e30dbe910.png">
+                        <span class="content">15.9元鸡肉卷单人餐，25.9元单人餐，27.8元童子鸡套餐</span>
+                    </div>
+                </div>
+
+            </div>
+            `
+
+
+
+
+                console.log(stars(3));
+
+            }
             // console.log(distance);
-            document.querySelector('.poi-name').innerHTML = '欢乐季(湘东店)';
-            document.querySelector('.location').innerHTML = distance;
-            document.querySelector('.imgbox img').src =
-                "https:////p1.meituan.net/bbia/548e825cf678a30671d95708e3c7f3be174470.png@320w_320h_1e_1c"
-            document.querySelector('.price').innerHTML = '￥27/人';
-            document.querySelector('.catename').innerHTML = '快递简餐';
-            document.querySelector('.server-tag').innerHTML = "支持外卖"
+            // document.querySelector('.poi-name').innerHTML = '欢乐季(湘东店)';
+            // document.querySelector('.location').innerHTML = distance;
+            // document.querySelector('.imgbox img').src =
+            //     "https:////p1.meituan.net/bbia/548e825cf678a30671d95708e3c7f3be174470.png@320w_320h_1e_1c"
+            // document.querySelector('.price').innerHTML = '￥27/人';
+            // document.querySelector('.catename').innerHTML = '快递简餐';
+            // document.querySelector('.server-tag').innerHTML = "支持外卖"
+
+            function stars(fen) {
+                let ihtml = [];
+
+                for (var i = 0; i < fen; i++) {
+                    ihtml += `<i><img src="./image/五角星.png"></i>
+                        `
+                }
+                for (var i = 0; i < 5 - fen; i++) {
+                    ihtml += `
+                    <i><img src="./image/五角星灰.png"></i>
+                    `
+                }
+                return ihtml;
+            }
         }
     </script>
 </body>
