@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.page_one {
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: yellowgreen;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    text-align: center;
+    color: white;
+}
+
+.page_two {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.page_two .black {
+    width: 50%;
+    height: 100px;
+}
+
+.page_two .black div {
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+}
