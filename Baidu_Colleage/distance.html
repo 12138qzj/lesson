@@ -68,18 +68,22 @@
         // 命名规范
 
 
+
         const myLatitude = '27.6946090000',
             myLongitude = '113.7365660000';
 
 
         const shopinfo = [{
-            name: '肯德基(莲塘店)',
-            pos: [27.6466227000, 113.7407508100],
-            logo: 'https://img.meituan.net/600.600/msmerchant/35131b2532bb752cc98ca83a95bdadcf127544.jpg@220w_125h_1e_1c',
+            name: '东桥餐馆',
+            pos: [113.7407508100, 27.6466227000],
+            logo: 'https://p0.meituan.net/waimaipoi/8dcefd42f2dc7dae3deaee7cd96719d938912.jpg@220w_125h_1e_1c',
+
             price: '￥15/人',
-            catename: '快递简餐',
+            catename: '快递简餐|火车站',
             server: '支持外卖',
-            evaluate: 3
+            evaluate: 3,
+            promotion: "立减12",
+            content: '15.9元鸡肉卷单人餐，25.9元单人餐，27.8元童子鸡套餐'
 
 
         }, {
@@ -87,17 +91,49 @@
             pos: [113.7379400000, 27.6916460000],
             logo: 'https:////p1.meituan.net/bbia/548e825cf678a30671d95708e3c7f3be174470.png@320w_320h_1e_1c',
             price: '￥27/人',
-            catename: '快递简餐',
+            catename: '午市特卖双人餐，提供免费WiFi',
             server: '支持外卖',
-            evaluate: 4
+            evaluate: 4,
+            promotion: "立减19",
+            content: '15.9元鸡肉卷单人餐，25.9元单人餐，27.8元童子鸡套餐'
+
         }, {
-            name: '莲塘老鸭子店',
-            pos: [115.933514, 28.554123],
-            logo: 'http://p0.meituan.net/deal/__45899142__3351739.jpg@320w_320h_1e_1c',
+            name: '金鑫蛋糕(新街店)',
+            pos: [113.7462219800, 27.6376433400],
+            logo: 'http://p1.meituan.net/msmerchant/f23a2d8b4d4fd83df6da2831cbec132a16827.jpg@220w_125h_1e_1c',
+
             price: '￥14/人',
+            catename: '面包甜点 ',
+            server: '支持外卖',
+            evaluate: 2,
+            promotion: "立减12",
+            content: '15.9元鸡肉卷单人餐，25.9元单人餐，27.8元童子鸡套餐'
+        }, {
+            name: '麦华仕',
+            pos: [113.7523844900, 27.6467643400],
+            logo: 'http://p1.meituan.net/deal/584a06c742b3d6968daba6d8eff83dc548042.jpg@330w_187h_1e_1c',
+
+
+            price: '￥10/人',
             catename: '快递简餐',
             server: '支持外卖',
-            evaluate: 5
+            evaluate: 3,
+            promotion: "立减12",
+            content: '15.9元鸡肉卷单人餐，25.9元单人餐，27.8元童子鸡套餐'
+
+
+        }, {
+            name: '华莱士',
+            pos: [113.7369710000, 27.6897110000],
+            logo: 'https://p0.meituan.net/600.600/deal/3c3b8cd622adc94958f7069e1467649268161.jpg@220w_125h_1e_1c',
+
+            price: '￥27/人',
+            catename: '午市特卖双人餐，提供免费WiFi',
+            server: '支持外卖',
+            evaluate: 4,
+            promotion: "立减10",
+            content: '15.9元鸡肉卷单人餐，25.9元单人餐'
+
         }];
         // sdk 有点大， 他在远方
         // js 事件机制
@@ -167,11 +203,11 @@
                     <div class="preferential">
                         <div class="promotion-wrapper">
                             <span class="promotion">
-                                立减17.9
+                                ${shopinfo[i].promotion}
                             </span>
                         </div>
                         <img class="icon" src="http://p1.meituan.net/codeman/93231059874052e97c0976c8a6e30dbe910.png">
-                        <span class="content">15.9元鸡肉卷单人餐，25.9元单人餐，27.8元童子鸡套餐</span>
+                        <span class="content">${shopinfo[i].content}</span>
                     </div>
                 </div>
 
