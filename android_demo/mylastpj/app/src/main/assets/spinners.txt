@@ -1,0 +1,18 @@
+﻿{
+	"spinnerList": [
+
+
+            {
+                "paraName": "室内/室外",
+                "paraValue": "Billiards"
+            },
+            {
+                "paraName": "室内",
+                "paraValue": "Basketball"
+            },
+            {
+                "paraName": "室外",
+                "paraValue": "Football"
+            }
+	]
+}
