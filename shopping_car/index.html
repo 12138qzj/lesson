@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车</title>
+</head>
+
+<body>
+
+    第一个<input type="checkbox" name="qq" onclick="check(this)" value="第一个" /> </br>
+    第二个<input type="checkbox" name="qq" onclick="check(this)" value="第二个" /></br>
+    第三个<input type="checkbox" name="qq" onclick="check(this)" value="第三个" /> </br>
+    第四个<input type="checkbox" name="qq" onclick="check(this)" value="第四个" /></br>
+    第五个<input type="checkbox" name="qq" onclick="check(this)" value="第五个" /> </br>
+    第六个<input type="checkbox" name="qq" onclick="check(this)" value="第六个" /></br>
+    全选<input type="checkbox" name="all" onclick="allcheck(this)" value="全选" /> </br>
+    总计：<input type="text" id="together" value="0" disabled="false" style="width: 50px;" />
+    <script>
+        let num = 0;
+        var together = document.getElementById("together");
+
+        function check(one) {
+            if (one.checked) {
+                console.log("你点击来一下", one.value);
+                num++;
+                together.value = num;
+            }
+            if (!one.checked) {
+                console.log("你取消点击", one.value);
+                num--;
+                together.value = num;
+            }
+
+        }
+
+        function allcheck(all) {
+            if (all.checked) {
+                var allnode = document.getElementsByName("qq");
+                for (let i = 0; i < allnode.length; i++) {
+                    allnode[i].checked = true;
+                    num = allnode.length;
+                    together.value = allnode.length;
+                }
+                console.log("你点击了所有", all.value, allnode);
+            }
+            if (!all.checked) {
+                var allnode = document.getElementsByName("qq");
+                for (let i = 0; i < allnode.length; i++) {
+                    allnode[i].checked = false;
+                    together.value = 0;
+                    num = 0;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
