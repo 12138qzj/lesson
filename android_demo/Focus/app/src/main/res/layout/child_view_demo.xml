@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGray">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorWhite"
+        android:layoutDirection="ltr">
+        <ImageView
+            android:id="@+id/iv_focus"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/forward"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/tv_focus_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="0dp"
+            android:layout_toEndOf="@id/iv_focus"
+            android:text="忘了爱"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_focus_description"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="0dp"
+            android:layout_toEndOf="@id/iv_focus"
+            android:textSize="13sp"
+            android:text="在这个世界，我爱上了你，我无法自拔..."
+            android:textColor="@color/colorBlack"/>
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:layout_marginEnd="10dp"
+            android:text="+关注"
+            android:textColor="@color/colorAccent"
+            android:textSize="15sp"
+            android:background="@drawable/focus_textview"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="10dp"
+            android:background="@color/colorGray"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+</LinearLayout>

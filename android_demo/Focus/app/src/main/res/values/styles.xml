@@ -1,0 +1,13 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="TabStyle" parent="Theme.AppCompat">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">15sp</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>
