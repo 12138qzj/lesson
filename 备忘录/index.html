@@ -122,6 +122,23 @@
     <script>
         const submit = document.querySelector('.submit');
         const ul = document.querySelector('ul');
+        //const checkbox = document.getElementsByName('name');
+
+        // for (let i = 0; i < checked.length; i++) {
+        //     checked[i].addEventListener('click', (e) => {
+        //         console.log(i);
+        //     })
+        // }
+
+
+
+
+
+
+
+
+
+
         let todo = [];
         let localData = JSON.parse(localStorage.getItem('todo'));
         if (localData != null) {
@@ -149,22 +166,41 @@
             render();
         })
 
-        function render() {
-            ul.innerHTML = todo.map((item, i) => {
-                    console.log("789");
-                    console.log("localdata", localData)
-                    return `
-                    <li>
-                        <input type="checkbox" id="todo${i}" name="cbox" style="width: 20px; height: 20px;">
-                        <label for="todo${i}">${item.text}</label>
-                    </li>
-                `;
-                })
-                .join('');
+        function clicked(check) {
+            if (check.checked) {
+                console.log("点击了一下", check.id.charAt(4), check.checked)
+                todo[check.id.charAt(4)].done = true;
+                console.log(todo);
+                localStorage.setItem('todo', JSON.stringify(todo));
+            } else {
+                todo[check.id.charAt(4)].done = false;
+                localStorage.setItem('todo', JSON.stringify(todo));
+
+            }
         }
 
+        function render() {
+            ul.innerHTML = todo.map((item, i) => {
+                    if (item.done) {
+                        return `
+                    <li>
+                        <input type="checkbox" id="todo${i}" name="cbox" onclick="clicked(this)" checked="true" style="width: 20px; height: 20px;">
+                        <label for="todo${i}">${item.text}</label>
+                    </li>
+                    `
+                    } else {
+                        return `
+                    <li>
+                        <input type="checkbox" id="todo${i}" name="cbox" onclick="clicked(this)"  style="width: 20px; height: 20px;">
+                        <label for="todo${i}">${item.text}</label>
+                    </li>
+                    `
+                    }
 
+                })
+                .join('');
 
+        }
 
         const check = document.getElementsByName('cbox');
         const clear = document.getElementById('clear');
@@ -175,19 +211,22 @@
 
             for (let i = 0; i < check.length; i++) {
                 check[i].checked = false;
+                todo[i].done = false;
+                localStorage.setItem('todo', JSON.stringify(todo));
             }
         })
         checkAll.addEventListener('click', (e) => {
 
             for (let i = 0; i < check.length; i++) {
                 check[i].checked = true;
+                todo[i].done = true;
+                localStorage.setItem('todo', JSON.stringify(todo));
             }
         })
         clear.addEventListener('click', (e) => {
 
             localStorage.clear();
             todo.splice(0, todo.length);
-            console.log('todo', todo);
             render();
         })
     </script>
