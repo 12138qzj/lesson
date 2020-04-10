@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>张华卿泡妞记</title>
+</head>
+<body>
+    3322
+    <script>
+    //alert('开始');
+    //声明对象/*结构体*/
+    class Flower{
+        constructor(type,n){/*构造函数 new 运行*/
+        this.type=type;
+        this.n=n;
+        }
+    }
+       var zhq={
+        name:'张华卿',
+        age :21,//整型
+        favorites:['敲代码','搞颜色'],
+        room:416,
+        isSingle:true,
+        yz: 95,
+        sendFlower:function(target){/*target形参  传入对象 */
+            var flower=new Flower('玫瑰',99);
+            console.log(flower.type,flower.n);
+            
+            target.receiveFlower(this,flower);/**用该对象调用*/
+           
+        }
+    }
+    var xiaoqiu={
+        name:'小邱',
+        age:19,
+        isGoodMod:false,
+        receiveFlower:function(sender,flower){
+            if (!this.isGoodMod){//sender.yz<90
+                console.log('丑拒');
+            }else{
+                console.log('万达走一波');
+            }
+            // console.log(this.isGoodMod);
+            // console.log(sender,flower);
+
+        }
+    }
+    var xiaomei={
+        hometown:"赣州",
+        receiveFlower:function(sender,flower){
+            // if(sender.name == '张华卿1'){
+
+            //     console.log("华卿哥哥，还是我们在前一起吧！。。。");
+
+
+            // }else{
+                setTimeout(function(){/*定时器  参数（函数，跳转时间）*/
+                    xiaoqiu.isGoodMod=true;
+                    xiaoqiu.receiveFlower(sender,flower);
+                },5000)              
+            }
+
+        //}
+    }
+    zhq.sendFlower(xiaomei);
+    </script>
+</body>
+</html>
