@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索框</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        display: flex;
+        justify-content: center;
+        background-color: yellow;
+    }
+    
+    .serach-from {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    input[type="text"] {
+        border: 10px solid #f7f7f7;
+        padding: 10px;
+        /*去除选中的蓝色外边框*/
+        outline: none;
+        /*box-shadow:外阴影outset，内阴影 inset;*/
+        box-shadow: 0 0 5px 1px rgba(0, 0, 0.6, 0.1);
+        text-align: center;
+        border-radius: 4px;
+    }
+    
+    ul li {
+        list-style: none;
+        background-color: white;
+        border: 1px solid gray;
+        /*perspective() 是透视函数*/
+    }
+    
+    ul li:nth-child(odd) {
+        transform: perspective(50px) rotateX(-3deg);
+        /*perspective() 是透视函数*/
+    }
+    
+    ul li:nth-child(even) {
+        transform: perspective(50px) rotateX(3deg);
+    }
+    
+    span {
+        background-color: pink;
+    }
+</style>
+
+<body>
+    <div class="search-from">
+        <input type="text" id="suggest">
+        <ul>
+            <li>filter</li>
+            <li>or state</li>
+        </ul>
+    </div>
+    <script>
+        const suugest = document.getElementById('suggest');
+        const ul = document.querySelector('ul');
+        let cities = [];
+        fetch('https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json')
+            .then(res => {
+                console.log(res); //res 获取内容的对象
+                return res.json(); // fetch拉取需要时间 then()：执行完在运行之中的函数 将数据转化为数组
+            })
+            .then(data => {
+                console.log(data);
+                cities = data;
+            })
+        suugest.addEventListener('keyup', (e) => {
+            let v = e.target.value; //获取当前监听对象里面的内容
+
+            if (!v) return;
+            ul.innerHTML = cities.map((value, index) => {
+
+                    if (value.city.includes(v) || value.state.includes(v)) {
+
+                        console.log(value.city)
+                        let temp = (value.city + "-" + value.state)
+                            .replace(v, "<span>" + v + "</span>")
+
+                        return `
+                        <li>${temp}</li>
+                        `;
+                    }
+                }).join('')
+                // ul.innerHTML=suggestCity.filter()
+        })
+    </script>
+</body>
+
+</html>
