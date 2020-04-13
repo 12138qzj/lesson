@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+.sleft {
+  float: left;
+  border-right: 1px solid #bddaf5;
+  width: 182px;
+}
+.finace-wrapper {
+  height: 102px;
+  border: 1px solid #cae OF3;
+  border-top: 3px solid #9ec;
+}
