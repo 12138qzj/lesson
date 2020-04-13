@@ -1,0 +1,78 @@
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .all {
+        position: relative;
+        width: 500px;
+        height: 300px;
+        border: 1px solid #e4c6b6;
+    }
+    
+    h3 {
+        text-align: center;
+    }
+    
+    .tab {
+        border-bottom: 1px solid #e1e2e1;
+    }
+    
+    ul {
+        display: inline-block;
+        font-size: 0;
+        border-bottom: 1px solid #e1e2e1;
+    }
+    
+    ul li {
+        position: relative;
+        display: inline-block;
+        border-right: 1px solid #e1e2e1;
+        border-bottom: 1px solid #e1e2e1;
+        font-size: 15px;
+        padding: 15px 20px 15px 20px;
+    }
+    
+    .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    
+    .tabadd {
+        float: right;
+        padding: 15px;
+        border-left: 1px solid #e1e2e1;
+    }
+    
+    .section {
+        margin: 30px;
+    }
+    
+    .section1 {
+        display: none;
+    }
+    
+    .section2 {
+        display: inline-block;
+    }
+    
+    .tab1 {
+        border-bottom: none;
+    }
+    
+    .all .tab input {
+        width: 45px;
+    }
+    
+    .all .section input {
+        width: 400px;
+        height: 200px;
+    }
