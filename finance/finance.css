@@ -10,8 +10,12 @@ a {
   border-right: 1px solid #bddaf5;
   width: 182px;
 }
-.finace-wrapper {
+.sright {
+  float: left;
+}
+.finance-wrapper {
   height: 102px;
   border: 1px solid #cae OF3;
-  border-top: 3px solid #9ec;
+  border-top: 3px solid #9ec9ee;
+  overflow: hidden;
 }
