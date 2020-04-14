@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .menu {
+        display: flex;
+        list-style: none;
+        justify-content: center;
+        margin: 80px 0;
+    }
+    
+    a {
+        padding: 2px;
+        border-radius: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        color: black;
+    }
+    
+    .menu li {
+        margin: 0 20px;
+    }
+    
+    .wrapper {
+        margin: 0 auto;
+        max-width: 500px;
+    }
+    
+    body {
+        height: 100vh;
+        /*linear-gradient() 
+        渐变色 默认从下到上渐变 根据视窗的中心位置旋转角度*/
+        background: linear-gradient(45deg, red, blue), linear-gradient(135deg, black, white);
+    }
+    
+    .bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 0;
+        width: 0;
+        background-color: white;
+        border-radius: 10px;
+        z-index: -1;
+        /* 过度效果 */
+        transition: all .3s;
+    }
+</style>
+
+<body>
+    <nav>
+        <ul class="menu">
+            <li><a href="">Home</a></li>
+            <li><a href="">Order Status</a></li>
+            <li><a href="">Tweets</a></li>
+            <li><a href="">Read Our History</a></li>
+            <li><a href="">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="wrapper">
+        <p>Lorem ipsum dolor sit amet, <a href="">consectetur</a> adipisicing elit. Est <a href="">explicabo</a> unde natus necessitatibus esse obcaecati distinctio, aut itaque, qui vitae!</p>
+        <p>Aspernatur sapiente quae sint <a href="">soluta</a> modi, atque praesentium laborum pariatur earum <a href="">quaerat</a> cupiditate consequuntur facilis ullam dignissimos, aperiam quam veniam.</p>
+        <p>Cum ipsam quod, incidunt sit ex <a href="">tempore</a> placeat maxime <a href="">corrupti</a> possimus <a href="">veritatis</a> ipsum fugit recusandae est doloremque? Hic, <a href="">quibusdam</a>, nulla.</p>
+        <p>Esse quibusdam, ad, ducimus cupiditate <a href="">nulla</a>, quae magni odit <a href="">totam</a> ut consequatur eveniet sunt quam provident sapiente dicta neque quod.</p>
+        <p>Aliquam <a href="">dicta</a> sequi culpa fugiat <a href="">consequuntur</a> pariatur optio ad minima, maxime <a href="">odio</a>, distinctio magni impedit tempore enim repellendus <a href="">repudiandae</a> quas!</p>
+    </div>
+    <!-- 将这个盒子隐藏在视窗的右上角 -->
+    <div class="bg">
+
+    </div>
+    <script>
+        const bg = document.querySelector('.bg');
+        const allA = document.querySelectorAll('a');
+        allA.forEach((A) => {
+            A.addEventListener('mouseenter', (e) => {
+                const size = A.getBoundingClientRect(); //获取该元素的各项属性 
+                console.log(size)
+                bg.style.width = size.width + 'px'; //获取距离顶部的距离
+                bg.style.height = size.height + 'px'; //获取距离右边的距离
+                bg.style.top = size.top + window.scrollY + 'px'; //获取距离顶部的距离+滚动条向下滚动的距离
+                bg.style.left = size.left + window.scrollX + 'px'; //获取距离右边的距离+滚动条向右滚动的距离
+
+            })
+        });
+    </script>
+</body>
+
+</html>
