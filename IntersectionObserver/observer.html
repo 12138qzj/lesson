@@ -30,6 +30,23 @@
 
         </div>
     </div>
+    <script>
+        const target = document.querySelector('.target');
+        //设置监听
+        let observer = new IntersectionObserver((nodes) => { //回调函数
+            nodes.forEach(node => {
+                if (node.isIntersecting) {
+                    console.log("出现了")
+                }
+            })
+        }, {
+            root: document.querySelector('.container'), // 设置 根元素
+            rootMargin: '0px 0px 100px 0px', //上 右 下 左  监听的元素 到根元素的距离  达到则触发回调函数
+            threshold: [0.5, 1] //出现的比例  到达该值则回调函数  50% 回调一次  100% 再回调一次
+        });
+        //监听该元素  出现在视窗内，则会通知我  =>用回调函数 的方法通知
+        observer.observe(target);
+    </script>
 </body>
 
 </html>
