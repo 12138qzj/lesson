@@ -1,0 +1,1 @@
+1. stylus -w .\finance.styl -o .\finance.css  该命令 将style文件隐射到css文件中去
