@@ -85,21 +85,39 @@ class Tab {
         var input = this.querySelector('input:first-child');
         input.select(); //文字处于选中的状态
         input.value = str;
-        input.onblur = function() {
+
+
+        // input.onblur = function(e) {
+        //     console.log(this.value);
+        //     input.parentNode.innerHTML = this.value;
+        // }
+
+        // input.onkeyup = function(e) {
+        //     //e.stopPropagation();
+        //     //e.preventDefault(); //阻止原有事件发生
+        //     if (e.keyCode === 13) {
+        //         input.parentNode.innerHTML = this.value;
+        //         console.log('up值', this.value)
+        //         console.log('up值e', e.target.value)
+        //             //console.log(this.parentNode)
+        //             //this.onblur();
+        //     } else {
+        //         return;
+        //     }
+        // }
+
+        input.addEventListener('blur', function(e) {
             console.log(this.value);
-
-
             this.parentNode.innerHTML = this.value;
-        }
-        input.onkeyup = function(e) {
-            e.stopPropagation();
-            e.preventDefault();
-            if (e.keyCode === 13) {
-                this.parentNode.innerHTML = this.value;
-            }
-            //this.onblur();
+        })
 
-        }
+        input.addEventListener('keyup', function(e) {
+            if (e.keyCode === 13) {
+                this.onblur();
+                console.log('这个', e.target.value);
+                //this.parentNode.innerHTML = this.value;
+            }
+        })
 
     }
 
