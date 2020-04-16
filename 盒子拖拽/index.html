@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .drag {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+</style>
+
+<body>
+
+    <div id="drag1" class="drag">
+        h2
+    </div>
+    <div id="drag2" class="drag">
+        sdfghjkljjhbfddfgbhjmkm
+    </div>
+    <script>
+        // console.log("宽度", windowwidth, "高度", windowheight);
+
+        function DragAble(selector) {
+            const that = this;
+            this.drag = document.querySelector(selector);
+            const dragSize = this.drag.getBoundingClientRect();
+            var windowwidth = window.innerWidth - dragSize.width;
+            var windowheight = window.innerHeight - dragSize.height;
+            this.drag.addEventListener('mousedown', this.mousedown);
+        }
+
+
+        DragAble.prototype.event = function(e) {
+
+
+        }
+
+
+        DragAble.prototype.mousemove = function(e) {
+            if (e.clientY > windowheight) {
+                that.drag.style.top = windowheight + 'px';
+            }
+            if (e.clientX > windowwidth) {
+                that.drag.style.left = windowwidth + 'px';
+            } else {
+                console.log(dragSize);
+                that.drag.style.top = e.clientY + 'px';
+                that.drag.style.left = e.clientX + 'px';
+                console.log(e.clientX, e.clientY);
+            }
+        }
+        DragAble.prototype.mousedown = function() {
+            console.log("dfsggs")
+            console.log(this)
+            console.log(this.mousemove)
+            document.addEventListener('mousemove', this.mousemove);
+            document.addEventListener('mouseup', this.mouseup)
+        }
+        DragAble.prototype.mouseup = function() {
+            console.log("up")
+            document.removeEventListener('mousemove', event);
+        }
+        console.log(DragAble.prototype)
+
+        new DragAble('#drag1');
+        new DragAble('#drag2');
+        // const drag = document.querySelector('#drag1');
+        //获取盒子的属性
+
+
+
+        //    drag.addEventListener('mousedown', () => {
+        //         document.addEventListener('mousemove', event)
+
+
+        //         document.addEventListener('mouseup', (e) => {
+        //             document.removeEventListener('mousemove', event);
+
+
+        //         })
+
+        //     })
+    </script>
+</body>
+
+</html>
