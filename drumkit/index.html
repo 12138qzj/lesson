@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DrumKit_敲击</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+    <div class="keys">
+        <div class="key ">
+            <div>A</div>
+            <span class="sound">CLAP</span>
+        </div>
+        <div class="key">
+            <div>S</div>
+            <span class="sound">HIHAT</span>
+        </div>
+        <div class="key">
+            <div>D</div>
+            <span class="sound">KICK</span>
+        </div>
+        <div class="key">
+            <div>F</div>
+            <span class="sound">OPENHAT</span>
+        </div>
+        <div class="key">
+            <div>G</div>
+            <span class="sound">BOOM</span>
+        </div>
+        <div class="key">
+            <div>H</div>
+            <span class="sound">RIDE</span>
+        </div>
+        <div class="key">
+            <div>J</div>
+            <span class="sound">SNARE</span>
+        </div>
+        <div class="key">
+            <div>K</div>
+            <span class="sound">TOM</span>
+        </div>
+        <div class="key">
+            <div>L</div>
+            <span class="sound">TINK</span>
+        </div>
+    </div>
+
+    <audio src="sounds/clap.wav" data-key="65"></audio>
+    <audio src="sounds/hihat.wav" data-key="83"></audio>
+    <audio src="sounds/kick.wav" data-key="68"></audio>
+    <audio src="sounds/openhat.wav" data-key="70"></audio>
+    <audio src="sounds/boom.wav" data-key="71"></audio>
+    <audio src="sounds/ride.wav" data-key="72"></audio>
+    <audio src="sounds/snare.wav" data-key="74"></audio>
+    <audio src="sounds/tom.wav" data-key="75"></audio>
+    <audio src="sounds/tink.wav" data-key="76"></audio>
+    <script>
+        const playSound = (event) => {
+            console.log(event);
+            let keyCode = event.keyCode;
+            const ele = document
+                .querySelector(`audio[data-key="${keyCode}"]`);
+            const keys = document.querySelectorAll('.key');
+            if (ele) {
+                keys.forEach((key) => {
+                    key.classList.remove('height');
+                    //获取盒子里的第一个div  然后获取对应的字母  转化为小写 与之对比
+                    if (key.querySelector("div:first-child").innerHTML.toLowerCase() === event.key) {
+                        key.classList.add('height')
+                        window.addEventListener('keyup', () => {
+                            key.classList.remove('height');
+                        })
+                    }
+                })
+                ele.play();
+            }
+        }
+        window.addEventListener('keydown', playSound)
+    </script>
+</body>
+
+</html>
