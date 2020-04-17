@@ -34,43 +34,70 @@
         function DragAble(selector) {
             const that = this;
             this.drag = document.querySelector(selector);
-            const dragSize = this.drag.getBoundingClientRect();
-            var windowwidth = window.innerWidth - dragSize.width;
-            var windowheight = window.innerHeight - dragSize.height;
-            this.drag.addEventListener('mousedown', this.mousedown);
+            this.dragSize = this.drag.getBoundingClientRect();
+
+            this.drag.addEventListener('mousedown', this.mousedown.bind(this));
+            console.log("内", this)
+                //this.prototype.__proto__.that1 = this;
         }
 
 
-        DragAble.prototype.event = function(e) {
+        DragAble.prototype.event = function(e) {}
 
 
-        }
-
-
-        DragAble.prototype.mousemove = function(e) {
-            if (e.clientY > windowheight) {
-                that.drag.style.top = windowheight + 'px';
-            }
-            if (e.clientX > windowwidth) {
-                that.drag.style.left = windowwidth + 'px';
-            } else {
-                console.log(dragSize);
-                that.drag.style.top = e.clientY + 'px';
-                that.drag.style.left = e.clientX + 'px';
-                console.log(e.clientX, e.clientY);
-            }
-        }
+        // DragAble.prototype.mousemove = function mousemove(e) {
+        //     if (e.clientY > windowheight) {
+        //         that.drag.style.top = windowheight + 'px';
+        //     }
+        //     if (e.clientX > windowwidth) {
+        //         that.drag.style.left = windowwidth + 'px';
+        //     } else {
+        //         console.log(dragSize);
+        //         that.drag.style.top = e.clientY + 'px';
+        //         that.drag.style.left = e.clientX + 'px';
+        //         console.log(e.clientX, e.clientY);
+        //     }
+        // }
         DragAble.prototype.mousedown = function() {
-            console.log("dfsggs")
-            console.log(this)
-            console.log(this.mousemove)
-            document.addEventListener('mousemove', this.mousemove);
-            document.addEventListener('mouseup', this.mouseup)
-        }
-        DragAble.prototype.mouseup = function() {
-            console.log("up")
-            document.removeEventListener('mousemove', event);
-        }
+
+                const mousemove = (e) => {
+
+                    var windowwidth = window.innerWidth - this.dragSize.width;
+                    var windowheight = window.innerHeight - this.dragSize.height;
+                    if (e.clientY > windowheight) {
+                        this.drag.style.top = windowheight + 'px';
+                    }
+                    if (e.clientX > windowwidth) {
+                        this.drag.style.left = windowwidth + 'px';
+                    } else {
+                        console.log(this.dragSize);
+                        this.drag.style.top = e.clientY + 'px';
+                        this.drag.style.left = e.clientX + 'px';
+                        console.log(e.clientX, e.clientY);
+                    }
+                }
+
+                this.mouseup = () => {
+                    console.log("up", this)
+                    document.removeEventListener('mousemove', mousemove);
+                }
+                console.log("dfsggs")
+                    //console.log("t", t);
+                console.log("外", this, "外")
+                    //console.log(this.mousemove)
+                document.addEventListener('mousemove', mousemove);
+                document.addEventListener('mouseup', this.mouseup);
+
+
+
+
+
+
+            }
+            // DragAble.prototype.mouseup = function() {
+            //     console.log("up")
+            //     document.removeEventListener('mousemove', event);
+            // }
         console.log(DragAble.prototype)
 
         new DragAble('#drag1');
