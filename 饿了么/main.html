@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/2.3.0/style/weui.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<!-- style="position:relative;" -->
+
+<body>
+
+
+    <!-- style="position: sticky; top: 0;" -->
+    <!-- style="height: 100vh;" -->
+    <div class="page tabbar js_show">
+        <!-- 该盒子为弹性布局  将主要内容设置为 占据1  其余用内容撑开盒子占据空间 -->
+        <div class="page__bd" style="height: 100%;">
+            <div class="weui-tab" style="height: 100vh;">
+                <!-- 搜索框 -->
+                <div class="weui-search-bar weui-search-bar_focusing" id="searchBar" style="background-color:#1778fd;">
+                    <a href="javascript:" class="weui-search-bar__cancel-btn icon_dwon" id="searchCance" style="color: white;  padding: 5px 10px 5px 5px;">南昌</a>
+                    <form class="weui-search-bar__form">
+
+                        <div class="weui-search-bar__box">
+                            <i class="weui-icon-search"></i>
+                            <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+                            <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+                        </div>
+                        <label class="weui-search-bar__label" id="searchText" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">
+                            <i class="weui-icon-search"></i>
+                            <span>搜索</span>
+                        </label>
+                    </form>
+                    <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel" style="color: white; padding: 5px 10px 5px 10px;">取消</a>
+                </div>
+                <div class="weui-cells searchbar-result" id="searchResult" style="display: none;">
+                    <div class="weui-cell weui-cell_active weui-cell_access">
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p>实时搜索文本</p>
+                        </div>
+                    </div>
+                    <div class="weui-cell weui-cell_active weui-cell_access">
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p>实时搜索文本</p>
+                        </div>
+                    </div>
+                    <div class="weui-cell weui-cell_active weui-cell_access">
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p>实时搜索文本</p>
+                        </div>
+                    </div>
+                    <div class="weui-cell weui-cell_active weui-cell_access">
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p>实时搜索文本</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 放入主要内容 -->
+                <div class="weui-tab__panel" style="background-color: #f0f0f0;">
+                    <div class="content">
+                        <div class="top">
+                            <!-- <ul>
+                                <li>
+                                    <div class="pic">
+                                        <img src="./image/美食.png" alt="">
+                                        <span>美食</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="pic">
+                                        <img src="./image/外卖.png" alt="">
+                                        <span>美食</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="pic">
+                                        <img src="./image/外卖.png" alt="">
+                                        <span>美食</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="pic">
+                                        <img src="./image/外卖.png" alt="">
+                                        <span>美食</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="pic">
+                                        <img src="./image/外卖.png" alt="">
+                                        <span>美食</span>
+                                    </div>
+                                </li>
+
+                            </ul> -->
+                            <ul>
+                                <li>
+                                    <div class="pic">
+                                        <img src="./image/美食.png" alt="">
+                                        <span>美食</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="pic">
+                                        <img src="./image/美食.png" alt="">
+                                        <span>美食</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="pic">
+                                        <img src="./image/美食.png" alt="">
+                                        <span>美食</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="pic">
+                                        <img src="./image/美食.png" alt="">
+                                        <span>美食</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="pic">
+                                        <img src="./image/美食.png" alt="">
+                                        <span>美食</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="pic">
+                                        <img src="./image/外卖.png" alt="">
+                                        <span>美食</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="pic">
+                                        <img src="./image/美食.png" alt="">
+                                        <span>美食</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="pic">
+                                        <img src="./image/美食.png" alt="">
+                                        <span>美食</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="pic">
+                                        <img src="./image/美食.png" alt="">
+                                        <span>美食</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="pic">
+                                        <img src="./image/外卖.png" alt="">
+                                        <span>美食</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="recommend">
+                            <ul>
+                                <li>
+                                    <div class="rli">
+                                        <div class="lileft" style="display: inline-block; font-size: 10px;">
+                                            <span style="font-weight: 700;">口碑农场</span></br>
+                                            <span style="color: #cacaca;">0元吃美食</span>
+                                        </div>
+                                        <img src="./image/汉堡.png" alt="" style="width: 23px; height:23px;  ">
+                                        <div class="topright_icon">
+                                            免费
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="rli">
+                                        <div class="lileft" style="display: inline-block; font-size: 10px;">
+                                            <span style="font-weight: 700;">奖励金</span></br>
+                                            <span style="color: #cacaca;">吃喝玩乐</span>
+                                        </div>
+                                        <img src="./image/汉堡.png" alt="" style="width: 23px; height:23px;  ">
+                                        <div class="topright_icon">
+                                            积分升级
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="rli">
+                                        <div class="lileft" style="display: inline-block; font-size: 10px;">
+                                            <span style="font-weight: 700;">口碑直播</span></br>
+                                            <span style="color: #cacaca;">显示抽奖</span>
+                                        </div>
+                                        <img src="./image/汉堡.png" alt="" style="width: 23px; height:23px;  ">
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="advertisement">
+
+                        </div>
+                        <div class="select">
+                            <div class="contaner">
+                                <div class="more">
+                                    <div class="left" style="float: left;">超值抢购</div>
+                                    <div class="right" style="float: right;">更多</div>
+                                </div>
+                                <div class="item">
+                                    <ul>
+                                        <li>
+                                            <!-- style="height: 50%;" -->
+                                            <div class="select_pic">
+
+                                                <img src="./image/书亦.png" style="width: 100%; height: 100%;">
+
+                                                <span style="font-size: 10px; line-height: 12px; margin-left: 7px;">新品首发</span>
+                                                <span style="color: red;  line-height: 12px; font-size: 12px; display: block; margin-left: 6px;">￥7.5</span>
+                                                <span style="color: #cacaca; line-height: 12px; font-size: 7px; margin-left: 7px;">书亦烧仙草</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="select_pic">
+
+                                                <img src="./image/书亦.png" style="width: 100%; height: 100%;">
+
+                                                <span style="font-size: 10px; line-height: 12px; margin-left: 7px;">新品首发</span>
+                                                <span style="color: red;  line-height: 12px; font-size: 12px; display: block; margin-left: 6px;">￥7.5</span>
+                                                <span style="color: #cacaca; line-height: 12px; font-size: 7px; margin-left: 7px;">书亦烧仙草</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="select_pic">
+
+                                                <img src="./image/书亦.png" style="width: 100%; height: 100%;">
+
+                                                <span style="font-size: 10px; line-height: 12px; margin-left: 7px;">新品首发</span>
+                                                <span style="color: red;  line-height: 12px; font-size: 12px; display: block; margin-left: 6px;">￥7.5</span>
+                                                <span style="color: #cacaca; line-height: 12px; font-size: 7px; margin-left: 7px;">书亦烧仙草</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- 为菜单栏 -->
+                <div class="weui-tabbar" style=" background-color:white;">
+                    <div class="weui-tabbar__item">
+                        <div style="display: inline-block; position: relative;">
+                            <img src="./image/zfb1.png" alt="" class="weui-tabbar__icon">
+                            <span class="weui-badge" style="position: absolute; top: -2px; right: -13px;">8</span>
+                        </div>
+                        <p class="weui-tabbar__label">首页</p>
+                    </div>
+                    <div class="weui-tabbar__item">
+                        <img src="./image/lc.png" alt="" class="weui-tabbar__icon">
+                        <p class="weui-tabbar__label">理财</p>
+                    </div>
+                    <div class="weui-tabbar__item">
+                        <div style="display: inline-block; position: relative;">
+                            <img src="./image/kb.png" alt="" class="weui-tabbar__icon">
+                            <span class="weui-badge weui-badge_dot" style="position: absolute; top: 0; right: -6px;"></span>
+                        </div>
+                        <p class="weui-tabbar__label">口碑</p>
+                    </div>
+                    <div class="weui-tabbar__item">
+                        <div style="display: inline-block; position: relative;">
+                            <img src="./image/py.png" alt="" class="weui-tabbar__icon">
+                            <span class="weui-badge weui-badge_dot" style="position: absolute; top: 0; right: -6px;"></span>
+                        </div>
+                        <p class="weui-tabbar__label">朋友</p>
+                    </div>
+                    <div class="weui-tabbar__item weui-bar__item_on">
+                        <img src="./image/w.png" alt="" class="weui-tabbar__icon">
+                        <p class="weui-tabbar__label">我</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
