@@ -1,0 +1,43 @@
+<script>
+    var name = "this Window";
+    var obj1 = {
+            name: 'this obj1',
+            functionName: function() {
+                return function() {
+                    console.log(this.name);
+                }
+            },
+            functionName1: function() {
+
+                console.log(this.name);
+
+            }
+        }
+        //obj1.functionName()();
+        //相当于这个
+        //    var f = obj1.functionName(); //这步相当于 var f=function(){ console.log(this.name)}
+        //    f(); //这步是window调用f()函数  则this为window  在将this传递给obj1.functionName()
+        //     console.log(this.name)
+        //     obj1.functionName1()
+
+
+
+    var obj2 = {
+        name: 'this obj2',
+        functionName: function() {
+            var that = this;
+            return function() {
+                console.log(that.name);
+            }
+        },
+        functionName1: function() {
+
+            console.log(this.name);
+        }
+    }
+    console.log();
+    // obj2.functionName()(); //这步操作相当于
+    var fn = obj2.functionName(); //在这一步已经改变this的指向  改为obj2的指向
+    //相当于 var fn= function(){ var that =this;  return function(){ console.log(that.name)}}
+    fn();
+</script>
