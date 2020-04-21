@@ -1,0 +1,44 @@
+<script>
+    //浅拷贝知识点
+    var oldobj = {
+            name: 'qzj',
+            age: 18,
+            active: {
+                name: 'bilibili',
+                age: 17
+            }
+        }
+        //浅拷贝 只会拷贝外面的一层数据 内层的对象数据  不能拷贝数据  
+        //只是将数据的地址拷贝给 新的数组
+    var newobj = {};
+
+    Object.assign(newobj, oldobj); //浅拷贝函数
+    console.log(oldobj);
+    //oldobj.age = 82;
+    newobj.active.age = 30; //在内层的数据则会是引用
+    console.log(newobj);
+</script>
+<script>
+    //使用递归的方法 来实现深拷贝
+    var nobj = {};
+
+    function deepCopy(nobj, oobj) {
+        for (k in oobj) {
+            //判断是否为简单的数据类型
+            if (oobj[k] instanceof Array) { //判断每一个数据是否为 数组
+                nobj[k] = {};
+                deepCopy(nobj[k], oobj[k]);
+            } else if (oobj[k] instanceof Object) { //判断是否为对象（数组也是对象  所以要先判断是否为数组）
+                nobj[k] = {};
+                deepCopy(nobj[k], oobj[k]);
+            } else {
+                nobj[k] = oobj[k];
+            }
+            //
+        }
+    }
+    deepCopy(nobj, oldobj);
+
+    oldobj.active.age = 999;
+    console.log(nobj);
+</script>
