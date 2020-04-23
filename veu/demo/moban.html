@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    
+
+
+
+    <div id="app">
+        {{msg}}
+        <p>Using mustaches: {{rawHtml}}</p>
+        <p v-html="rawHtml"></p><!-- v_html：html样式的绑定-->
+        <div v-bind:class="color">test...</div>
+        <p>{{number + 1 }}</p>
+        <p>{{1 ==1 ?'YES' : 'NO' }}</p> <!--  判断  结果为ture 为yes-->
+        <p>{{message. split('').reverse().join('')}}</p></div><!-- 函数的使用-->
+        <script type="text/javascript">
+        var vm = new Vue({
+            el : "#app",
+            data :{   
+            msg : "hi vue",
+            rawHtml : '<span style="kolor:red">this is should be red</span>',
+            color: 'blue',
+            number : 10,
+            ok:1,
+            message : "vue"
+        }
+    }); 
+        vm.msg = "hi....";
+</script>
+<style>
+    .red{color:red;}
+    .blue{color:blue; 
+    font-size:100px;}
+</style>
+</body>
+</html>

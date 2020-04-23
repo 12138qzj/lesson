@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="../vue.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="box">
+        {{name}}
+    </div>
+
+
+    <script type="text/javascript">
+    var data="qiu";
+   
+
+    var vm=new Vue({
+        el:"#box",
+        data:{
+            name:data
+        }
+    })
+
+    vm.$watch('data',function(newVal,oldVal){
+        console.log(newVal+oldVal);
+    })
+    vm.$name.data="q邱在杰";
+
+    </script>
+</body>
+</html>

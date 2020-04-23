@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app" >
+        <p v-if="seen">现在你看到我了</p>
+        <a v-bind:href="url">...</a>
+        <div @click="click1">
+            <div @click.stop="click2"><!-- 在这执行完 click2之后停下-->
+                click me
+            </div>
+        </div>
+    </div>
+        <script type="text/javascript">
+            var vm = new Vue({
+                el : "#app",
+                data : {
+                    seen : true,
+                    url : "https://vuejs.org/v2/guide/reactivity.html#Declaring-Reactive-Properties"
+                 },
+                methods:{
+                click1 : function () {
+                    console.log('click1......');
+                
+                },
+                click2 : function () {
+                    console.log('click2....');
+                
+                }
+            }
+        });
+    </script>
+</body>
+</html>
