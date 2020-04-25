@@ -1,57 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="../vue.js"></script>
 </head>
+
 <body>
     <div id="APP">
 
- 
         <div v-if="type==='A'">A</div>
         <div v-else-if="type==='B'">B</div>
         <div v-else-if="type==='C'">C</div>
         <div v-else>NOT A/B/C</div>
-        <h1 v-show="ok">hello!</h1><!-- <h1 style="display: none;">hello!</h1> -->
-
-        <li v-for="(item,index) in items"> <!-- 将json中的数据一个一个输出  获取items中是对象和索引-->
+        <h1 v-show="ok">hello!</h1>
+        <!-- <h1 style="display: none;">hello!</h1> -->
+        <!-- 列表渲染 -->
+        <!-- for in 循环-->
+        <li v-for="(item,index) in items" :key="index">
+            <!-- 将json中的数据一个一个输出  获取items中是对象和索引-->
             {{index}}:{{item.message}}
         </li>
         <li v-for="(value,key,index) in objects">
-             {{index}}:{{value}}:{{key}}<!--在遍历对象时，会按 Objects.keys() 的结果遍历 -->
+            {{index}}:{{value}}:{{key}}
+            <!--在遍历对象时，会按 Objects.keys() 的结果遍历 -->
         </li>
 
-        <button v-on:click="count+=1"> {{count}}</button><!-- v-on  可以绑定所有的事件 -->
-        <button v-on:click="djsj('数据',$event)"> 点击</button><!-- 事件 $evnet -->
+        <button v-on:click="count+=1"> {{count}}</button>
+        <!-- v-on  可以绑定所有的事件 -->
+        <button v-on:click="djsj('数据',$event)"> 点击</button>
+        <button @click="delect(0)">删除</button>
+        <!-- 事件 $evnet -->
     </div>
-   
+
     <script>
-        var vm=new Vue({
-            el:"#APP",
-            data:{
-                type:"A",
-                ok:false,
-                items: [
-                    {message : "语文书"},
-                    {message : "数学书"}
-                ],
-                objects :{
-                    item :"作者",
-                    tille:"标题"
+        var vm = new Vue({
+            el: "#APP",
+            data: {
+                type: "A",
+                ok: false,
+                items: [{
+                    message: "语文书"
+                }, {
+                    message: "数学书"
+                }],
+                objects: {
+                    item: "作者",
+                    tille: "标题"
                 },
-                count : 1,
-                djsj :function(str,e){
+                count: 1,
+                djsj: function(str, e) {
                     console.log(e);
                     alert(str);
                     alert("邱在杰");
-                
                 }
 
+            },
+            methods: {
+                delect(index) {
+                    console.log(index)
+                    this.items.splice(index, 1);
+                }
             }
         })
     </script>
 
 </body>
+
 </html>

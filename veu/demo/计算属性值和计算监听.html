@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+
+    <div class="app">
+        姓<input type="text" placeholder="" v-model="fristname"></br>
+        名<input type="text" placeholder="" v-model="lastname"></br>
+        姓名1（单项）<input type="text " placeholder="" v-model="fullname"></br>
+        姓名2（单项）<input type="text " placeholder="" v-model="fullname2"></br>
+        姓名3（双项）<input type="text " placeholder="" v-model="fullname3"></br>
+        <p>{{fullname3}}</p>
+        <p>{{fullname3}}</p>
+        <p>{{fullname3}}</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '.app',
+            data: {
+                fristname: '',
+                lastname: '',
+                fullname2: ''
+
+            },
+            //计算属性 
+            //通过getter setter 实现对属性数据的显示和监视
+            //计算属性存在缓存，多次读取只执行一次get计算
+            //getter  对应get方法
+            //setter  对应set方法
+            computed: {
+                fullname() {
+                    return this.fristname + " " + this.lastname
+                },
+                //回调函数 1.自己定义的 2.我不调用 3.最终执行了
+                //
+                fullname3: {
+                    //回调函数 当需要读取属性值的时候调用 
+                    get() {
+                        console.log("this"); //多次调用的时候 只会调用一次 将值缓存在内存中
+                        return this.fristname + ' ' + this.lastname; //将自己的值返回发哦fullname3中去
+                    },
+                    //回调函数 监视当前属性值的变化  
+                    set(value) {
+                        const names = value.split(' ');
+                        this.fristname = names[0]; //赋值
+                        this.lastname = names[1];
+                        // return this.fristname + ' ' + this.lastname;
+                    }
+                }
+            },
+            watch: { //配置监视数据  监视fristname这个参数  变化则执行这个回调函数
+                fristname: function(newvalue, oldvalue) {
+                    console.log(this);
+                    console.log(newvalue, oldvalue);
+                    this.fullname2 = newvalue + ' ' + this.lastname;
+                }
+            }
+        });
+        vm.$watch('lastname', function(newvalue, oldvalue) {
+            console.log(this);
+            console.log(newvalue, oldvalue);
+            console.log(this.fristname, this.fullname2);
+            this.fullname2 = this.fristname + ' ' + newvalue;
+        })
+    </script>
+</body>
+
+</html>

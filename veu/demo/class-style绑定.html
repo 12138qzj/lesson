@@ -1,49 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="../vue.js"></script>
 </head>
+
 <body>
     <div id="app">
-        <div 
-             v-bind:class="[isActive ? 'active' : '',isbackground ? 'blue': '' ]" //动态绑定
-            style="width:200px; height:200px; text-align:center; line-height:200px;">邱在杰</div>
+        <div v-bind:class="[isActive ? 'active' : '',isbackground ? 'blue': '' ]" //数组 动态绑定 style="width:200px; height:200px; text-align:center; line-height:200px;">邱在杰</div>
 
-            <div
-                :style="{color:color, fontSize:size, background: isRed ? '#FF0000' : ''}">
-                hi vue
-            </div>
+        <div :style="{color:color, fontSize:size, background: isRed ? '#FF0000' : ''}" //对象 动态绑定>
+            hi vue
         </div>
+    </div>
 
 
-        
+
 
 
     <script>
-        var vm=new Vue({
-            el : "#app",
-            data:{
-                isActive : true,
-                isbackground : true,
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                isActive: true,
+                isbackground: true,
 
-            
-                color :"red",
-                size : "200px",
-                isRed : false
+
+                color: "red",
+                size: "200px",
+                isRed: false
 
             }
         });
     </script>
     <style>
-        .active{
-            background:white;
+        .active {
+            background: white;
         }
-        .blue{
-            color:chartreuse;
+        
+        .blue {
+            color: chartreuse;
         }
     </style>
 </body>
+
 </html>

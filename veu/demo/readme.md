@@ -13,4 +13,8 @@
     <div id="app">
         {{name}}//在该位置显示 Vue中的name 《姓名》  Vue的库文件可以识别 转换为原生js代码
     </div>
-    {{message}} 
+    {{message}}
+ 3. MVVM解释
+    model:模型，数据对象（data）
+    view:视图
+    ViewModel:

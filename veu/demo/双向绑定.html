@@ -1,28 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="../vue.js"></script>
 </head>
-<body>
-    <div id="app">
-        <input v-model="message" placeholder="输出的信息"/>
-        <p> {{message}}</p>
 
-        <input type="checkbox" id="one" value="frist" v-model="checkb"/>
+<body>
+    <div class="app">
+        <input v-model="message" placeholder="输出的信息" />
+        <!-- 大括号表达式语法：将Veu里面的信息实时提取显示 -->
+        <p> {{message}}</p>
+        <!-- 相当于 v-text v-html -->
+        v-text="message":
+        <p v-text="message"> </p>
+        v-html:
+        <p v-html="message"> </p>
+        <h2>强制数据绑定 图片强制绑定 v-bind</h2>
+
+        <!-- <img v-bind:src="imgSrc" alt=""> -->
+        <!-- 可以取消写v-bind   ':'这个符号为强制绑定符号-->
+        <img :src="imgSrc" alt="">
+
+        <h2>绑定事件监听 </h2>
+        <button v-on:click="test">v-on:click</button>
+        <!-- 相当于下一行代码 -->
+        <button @click="test"> @click</button>
+
+        <input type="checkbox" id="one" value="frist" v-model="checkb" />
         <label for="one"> 第一个</label>
         <p> {{checkb}}</p>
+
+
     </div>
     <script>
-        var vm=new Vue({
-            el : "#app",
-            data : {
-                message : "",
-                checkb : []
+        var vm = new Vue({
+            el: ".app", //绑定标签  
+            data: {
+                message: "",
+                checkb: [],
+                imgSrc: '../image/代码图.png'
+            },
+            methods: {
+                test() {
+                    alert('hhhhhh')
+                }
+
             }
         });
     </script>
 </body>
+
 </html>
