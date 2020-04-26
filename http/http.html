@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="search_name" id="search_id" placeholder="搜索">
+    <button>搜索</button>
+    <ul>
+
+    </ul>
+    <script>
+        const search = document.getElementById('search_id');
+        const btn = document.querySelector('button');
+
+        btn.addEventListener('click', () => {
+            console.log(search.value);
+            http(search.value);
+        })
+
+
+
+
+        function http(key) {
+
+            //button 通过 ajax | http请求，向后端请求数据
+            const xhr = new XMLHttpRequest(); //创建一个请求
+            //向网易云后端 要数据  url:统一
+            //1. 请求方法 get :将数据通过url返回
+            //2. 请求的url request
+            //3. true 异步获取 false 同步获取
+            //异步 ：不需要等待代码执行 拿到资源 通知程序 然后交给程序
+            xhr.open('get', `http://neteasecloudmusicapi.zhaoboy.com/search?keywords=${key}`, true) //get获取方法
+                //发送请求
+                //xhr的回调函数
+            xhr.onreadystatechange = function() {
+                //xhr 有状态的 一共四种状态
+                //0	UNSENT	代理被创建，但尚未调用 open() 方法。
+                // 1	OPENED	open() 方法已经被调用。
+                // 2	HEADERS_RECEIVED	send() 方法已经被调用，并且头部和状态已经可获得。
+                // 3	LOADING	下载中； responseText 属性已经包含部分数据。
+                // 4	DONE	下载操作已完成。
+                //每一个状态 都会执行这个回调函数
+                console.log('xhr的状态：', xhr.readyState, xhr.response)
+                    //xhr.status==200浏览器响应状态
+                if (xhr.readyState == 4 && xhr.status == 200) { //状态为4到时候全部执行完成
+                    //JSON.parse(xhr.response)将数据解析为json的数据
+                    console.log(JSON.parse(xhr.response))
+                    let res = JSON.parse(xhr.response);
+                    document.querySelector('ul').innerHTML = res.result.songs.map((song) => {
+
+                        let singers = song.artists.map((artist) => {
+                            return `${artist.name}`
+                        }).join('/');
+                        return `
+                        <li>
+                            歌名:${song.name}  演唱：${singers}  
+                        </li>
+                        `
+
+                    }).join('')
+                }
+            }
+            xhr.send();
+            //拿到结果
+
+            console.log(xhr);
+        }
+    </script>
+</body>
+
+</html>
