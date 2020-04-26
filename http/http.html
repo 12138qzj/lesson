@@ -34,7 +34,7 @@
             //2. 请求的url request
             //3. true 异步获取 false 同步获取
             //异步 ：不需要等待代码执行 拿到资源 通知程序 然后交给程序
-            xhr.open('get', `http://neteasecloudmusicapi.zhaoboy.com/search?keywords=${key}`, true) //get获取方法
+            xhr.open('get', `http://127.0.0.1:8082/search?keywords=${key}`, true) //get获取方法
                 //发送请求
                 //xhr的回调函数
             xhr.onreadystatechange = function() {
@@ -49,20 +49,24 @@
                     //xhr.status==200浏览器响应状态
                 if (xhr.readyState == 4 && xhr.status == 200) { //状态为4到时候全部执行完成
                     //JSON.parse(xhr.response)将数据解析为json的数据
-                    console.log(JSON.parse(xhr.response))
-                    let res = JSON.parse(xhr.response);
-                    document.querySelector('ul').innerHTML = res.result.songs.map((song) => {
+                    // console.log(JSON.parse(xhr.response))
+                    // let res = JSON.parse(xhr.response);
+                    // document.querySelector('ul').innerHTML = res.result.songs.map((song) => {
 
-                        let singers = song.artists.map((artist) => {
-                            return `${artist.name}`
-                        }).join('/');
-                        return `
-                        <li>
-                            歌名:${song.name}  演唱：${singers}  
-                        </li>
-                        `
+                    //     let singers = song.artists.map((artist) => {
+                    //         return `${artist.name}`
+                    //     }).join('/');
+                    //     return `
+                    //     <li>
+                    //         歌名:${song.name}  演唱：${singers}  
+                    //     </li>
+                    //     `
 
-                    }).join('')
+                    //}).join('')
+                    console.log(xhr.response);
+                    document.querySelector('ul').innerHTML = `服务器返回的值为:${xhr.response}`
+
+
                 }
             }
             xhr.send();
