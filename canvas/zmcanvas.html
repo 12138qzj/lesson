@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cicle {
+            border: 1px solid #000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        
+        #combine {
+            border: 1px solid #000;
+        }
+        
+        .btn {
+            outline: none;
+            background-color: blue;
+        }
+        /* z-index */
+        /* cicle mouseenter */
+    </style>
+</head>
+
+<body>
+    <input type="text" id="text" />
+    <input type="file" id="file" hidden/>
+    <button class="btn">文件上传</button>
+    <div class="cicle"></div>
+    <img src="" alt="" id="preview" hidden>
+    <img src="./icon.png" alt="" id="flag" hidden>
+    <!-- 画布 
+  不同的标签 浏览给你画不同的内容 h2 加错  img 图片  border
+  -->
+    <!-- 
+    canvas
+    纯空白：加错 图片 边框 圆角 阴影 渐变 事件... 完全靠我们自己实现
+   -->
+    <canvas id="combine" width="200px" height="200px"></canvas>
+    <!-- http://xx.png -->
+    <!-- onchange: 输入框里面改变 -->
+    <script>
+        const fileNode = document.getElementById('file');
+        const combine = document.getElementById('combine');
+        const ctx = combine.getContext('2d');
+        // 1. 头像画 canvas
+        // 2. 国旗头像 画到 canvas 透明
+        fileNode.addEventListener('change', function(event) {
+            // 1 拿到内容
+            // 2 放到 img src
+            // 谁触发了事件 event.target 指向谁
+            console.log(event.target === fileNode, event.target === this);
+            let file = event.target.files[0];
+            console.log(file);
+            // 2进制   ->  base64(编码)
+            // unicode: utf-8  utf-16
+            // GBK      base64: a-zA-Z0-9.+  把内容编码成 64个字符组成的东西
+            let fileReader = new FileReader();
+            fileReader.onload = function(e) {
+                console.log(e.target === fileReader);
+                console.log(e.target.result);
+                document.getElementById('preview').src = e.target.result;
+                // 刚把 src 属性 加上去，就立即 画他，异步 ,浏览器 还没有把这个图片加载完毕
+                document.getElementById('preview').onload = function() {
+                    // 1 等 浏览器加载完图片了 才能画 不然有可能没图片内容 画出空的东西出来
+                    // drawImage 1：拿到 image 元素  2：画
+                    // 0, 0 起始坐标
+                    // 290 290 终止坐标
+                    ctx.drawImage(document.getElementById('preview'), 0, 0, 200, 200);
+                    // 2 
+                    ctx.drawImage(document.getElementById('flag'), 0, 0, 200, 200);
+                }
+            }
+            fileReader.readAsDataURL(file);
+        })
+        document.querySelector('.btn').addEventListener('click', function() {
+            fileNode.click();
+        })
+    </script>
+</body>
+
+</html>
