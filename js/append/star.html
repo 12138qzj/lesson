@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 状态  语义化html     -->
+    <div class="wrapper">
+
+    </div>
+    <script>
+        const wrappers = document.querySelector('.wrapper');
+
+
+
+        // let isLiked = false; // 点 
+        // button.addEventListener('click', () => {
+        //     isLiked = !isLiked;
+        //     // if (isLiked) {
+        //     //     buttonText.innerHTML = '取消'
+        //     // } else {
+        //     //     buttonText.innerHTML = '点赞'
+        //     // }
+        //     isLiked ? buttonText.innerHTML = '取消' : buttonText.innerHTML = '点赞';
+        // }, false)
+        class star {
+            constructor() {
+                this.isLiked = false;
+                this.init();
+            }
+            init() {
+                //wrappers.innerHTML += this.sender();
+                wrappers.appendChild(this.sender());
+                this.updata();
+                this.buttonText.onclick = this.btnclick;
+
+            }
+            updata() {
+                this.buttonText = wrappers.querySelectorAll('button');
+
+                for (let i = 0; i < this.buttonText.length; i++) {
+                    this.buttonText[i].onclick = this.btnclick;
+                }
+                console.log("查", this.buttonText)
+
+            }
+            sender() {
+                const Obtn = document.createElement('button'); //创建一个button的结点
+                const Ospan = document.createElement('span');
+                Ospan.setAttribute('class', "like-text");
+                Obtn.setAttribute('class', 'like-btn'); //设置结点属性  添加class属性
+                //document.createTextNode('取消') 创建一个文本结点
+                this.isLiked ? Ospan.appendChild(document.createTextNode('取消')) : Ospan.appendChild(document.createTextNode('点赞'));
+                Obtn.appendChild(Ospan);
+                //     return `  
+                // <button class="like-btn" >
+                //     <span class="like-text">${this.isLiked?'取消':'点赞'}</span>
+                // </button>  
+                // `
+                console.log('Obtn', Obtn)
+                return Obtn;
+            }
+            btnclick() {
+                this.isLiked = !this.isLiked;
+                console.log("this.isLiked", this.isLiked)
+                console.log(this)
+                this.isLiked ? this.querySelector('.like-text').innerHTML = '取消' : this.querySelector('.like-text').innerHTML = '点赞'
+            }
+        }
+        var stars = [];
+        stars[0] = new star();
+        stars[1] = new star();
+        stars[2] = new star();
+    </script>
+</body>
+
+</html>
