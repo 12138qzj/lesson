@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>进度条</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .progress-bar {
+        position: relative;
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+        height: 10px;
+        background-color: gray;
+        border-radius: 5px;
+    }
+    
+    .progress-button {
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        background-color: red;
+        border-radius: 10px;
+        /* //transform: translate(-50%, -25%); */
+    }
+    
+    .progress {
+        height: 100%;
+        width: 0;
+        border-radius: 5px;
+        background-color: red;
+    }
+</style>
+
+<body>
+
+    <div class="progress-bar">
+        <div class="progress"></div>
+        <div class="progress-button"></div>
+    </div>
+    <script>
+        class Progress {
+            constructor(select) {
+                this.wrap = document.querySelector(select);
+                this.Progress = this.wrap.querySelector('.progress');
+                this.Progress_btn = this.wrap.querySelector('.progress-button');
+                this.removeevent();
+                this.down = 0; //按下时候的坐标
+                this.btnleft = 0; //初始的距离左端距离
+                this.wrapWidth = 0;
+            }
+
+            removeevent() {
+                this.Progress_btn
+                    .addEventListener('touchstart', //移动端的鼠标按下事件
+                        (event) => {
+                            this.down = event.touches[0].clientX //touches[0]触点 第一个
+                            this.btnleft = event.touches[0].clientX;
+                            console.log(this.down);
+                            //获取进度条的长度
+                            this.wrapWidth = this.wrap.offsetWidth;
+                            console.log("this.wrap", this.wrap.offsetWidth) //相当于获取盒子宽度
+                        });
+                this.Progress_btn
+                    .addEventListener('touchmove', (event) => {
+                        // let left = event.touches[0].clientX - this.down + this.btnleft;
+                        //this.Progress_btn.style.left = `0`
+                        let leftPre = event.touches[0].clientX / this.wrapWidth * 100
+                            //this.Progress_btn.style.left = `${left}px`;
+                        console.log('leftPre', leftPre)
+                        if (leftPre < 0)
+                            leftPre = 0;
+                        if (leftPre > 100)
+                            leftPre = 100;
+                        this.Progress_btn.style.left = `${leftPre}%`;
+                        this.Progress.style.width = `${leftPre}%`
+                        console.log(event.touches[0].clientX)
+
+                    })
+            }
+
+        }
+        new Progress('.progress-bar');
+    </script>
+</body>
+
+</html>
