@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+    <button>6</button>
+    <button>7</button>
+    <script>
+        const btn = document.querySelectorAll('button');
+        // let btnb = btn
+        let a = [];
+        for (var i = 0; i < btn.length; i++) {
+            console.log(btn[i])
+            btn[i].addEventListener('click', (e) => {
+                if (a.length < 6) {
+                    a.unshift(e.target.innerHTML)
+                } else {
+                    sun(e.target.innerHTML);
+                }
+                console.log(a)
+            })
+
+        }
+
+        function sun(id) {
+            console.log('id', id)
+            for (let i = 0; i < a.length; i++) {
+                console.log('a[i]上', a[i]);
+                if (a[i] == id) {
+                    console.log('a[i]', a[i]);
+                    for (let j = i; j > 0; j--) {
+                        let temp = a[j];
+                        a[j] = a[j - 1];
+                        a[j - 1] = temp;
+                    }
+                    return;
+                } else {
+
+                }
+            }
+            a.pop();
+            a.unshift(id)
+            return;
+        }
+        //nsole.log(btn[key])
+        // for (const key in btn) {
+        //     btn[key].addEventListener('click', (e) => {
+        //         console.log(e.target.value)
+        //     })
+        // }
+    </script>
+</body>
+
+</html>
