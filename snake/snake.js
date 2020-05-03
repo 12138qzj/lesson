@@ -6,11 +6,11 @@ const SNAKE_BORDER_COLOUR = 'darkgreen';
 const FOOD_COLOUR = 'red';
 const FOOD_BORDER_COLOUR = 'darkred';
 let snake = [
-        { x: 150, y: 150 },
-        { x: 140, y: 150 },
-        { x: 130, y: 150 },
-        { x: 120, y: 150 },
-        { x: 110, y: 150 }
+        { x: 100, y: 100 },
+        { x: 90, y: 100 },
+        { x: 80, y: 100 },
+        { x: 70, y: 100 },
+        { x: 60, y: 100 }
     ]
     // 玩家的分数
 let score = 0;
@@ -31,22 +31,46 @@ ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
 // 绘制画布的“边框”
 ctx.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
 // 开始游戏
-main();
+
 // 生成第一个食物位置
 createFood();
 // 按下任意一个键，都会调用 changeDirection
 document.addEventListener("keydown", changeDirection);
+document.addEventListener('click', changeclick);
+var stopsnake = document.getElementById("stop");
+var snakeup = document.getElementById("up");
+var snakedwon = document.getElementById("buttom");
+var snakeleft = document.getElementById("left");
+var snakeright = document.getElementById("right");
+var startsnake = document.getElementById("start");
+var fail = document.getElementById('fail');
+var timeout;
+var timejg = 500;
+stopsnake.addEventListener('click', stoptime);
+startsnake.addEventListener('click', main);
 
 function main() {
-    if (didGameEnd()) return;
-    setTimeout(function onTick() {
-        clearCanvas();
-        drawFood();
-        advanceSnake();
-        drawSnake();
+    if (didGameEnd()) {
+        fail.innerHTML = '挑战失败！'
+        return;
+    }
+    var time = setTimeout(function onTick() {
+        clearCanvas(); //重新绘画画布覆盖前一步绘画
+        drawFood(); //先绘画食物
+        advanceSnake(); //在蛇的数组中加入头部数组 去掉尾部数组
+        drawSnake(); //重新绘画蛇
         // Call main again
-        main();
-    }, 100)
+        main(); //然后重复调用该函数
+    }, timejg)
+    timeout = time;
+}
+
+function stoptime() {
+    clearTimeout(timeout)
+}
+
+function starttime() {
+    clearTimeout(timeout)
 }
 /**
  * 设置画布的背景色为 CANVAS_BACKGROUND_COLOUR 
@@ -91,9 +115,9 @@ function drawFood() {
  */
 function advanceSnake() {
     // 绘制新的头部
-    const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+    const head = { x: snake[0].x + dx, y: snake[0].y + dy }; //根据dx dy来绘画新的头部
     // 将新的头部放到蛇身体的第一个部位
-    snake.unshift(head);
+    snake.unshift(head); //向数组添加的第一个元素。
     const didEatFood = snake[0].x === foodX && snake[0].y === foodY;
     if (didEatFood) {
         // 增加分数
@@ -101,6 +125,7 @@ function advanceSnake() {
         // 在屏幕上显示分数
         document.getElementById('score').innerHTML = score;
         // 生成新的食物
+        timejg -= 50;
         createFood();
     } else {
         // 移除蛇的最后一个部分
@@ -128,6 +153,8 @@ function createFood() {
         if (part.x == foodX && part.y == foodY) createFood();
     });
 }
+
+
 /**
  * 在画布上画蛇
  */
@@ -145,7 +172,7 @@ function drawSnakePart(snakePart) {
     // 设置蛇身的边框色
     ctx.strokestyle = SNAKE_BORDER_COLOUR;
     // 在蛇身坐标所在的位置，绘制“实心”的矩形以表示蛇      
-    ctx.fillRect(snakePart.x, snakePart.y, 10, 10);
+    ctx.fillRect(snakePart.x, snakePart.y, 10, 10); //x,y为矩形的左上角的坐标;10,10矩形的大小。
     // 绘制蛇身的边框
     ctx.strokeRect(snakePart.x, snakePart.y, 10, 10);
 }
@@ -178,6 +205,39 @@ function changeDirection(event) {
         dy = 0;
     }
     if (keyPressed === DOWN_KEY && !goingUp) {
+        dx = 0;
+        dy = 10;
+    }
+
+
+}
+
+function changeclick(event) {
+    // console.log(event.target)
+    // console.log(snakeup)
+
+    // const LEFT_KEY = 37;
+    // const RIGHT_KEY = 39;
+    // const UP_KEY = 38;
+    // const DOWN_KEY = 40;
+    // const keyPressed = event.keyCode;
+    const goingUp = dy === -10;
+    const goingDown = dy === 10;
+    const goingRight = dx === 10;
+    const goingLeft = dx === -10;
+    if (event.target == snakeleft && !goingRight) {
+        dx = -10;
+        dy = 0;
+    }
+    if (event.target == snakeup && !goingDown) {
+        dx = 0;
+        dy = -10;
+    }
+    if (event.target == snakeright && !goingLeft) {
+        dx = 10;
+        dy = 0;
+    }
+    if (event.target == snakedwon && !goingUp) {
         dx = 0;
         dy = 10;
     }
