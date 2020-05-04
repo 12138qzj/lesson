@@ -12,7 +12,7 @@ var nums2 = [2, 5, 6],
 var merge = function(nums1, m, nums2, n) {
     var j = 0;
     let leng = nums1.length;
-    for (let i = 0; i < m && m < ; i++) {
+    for (let i = 0; i < m && m < leng; i++) {
         console.log("i", i)
         console.log("j", nums2[j])
         if (nums1[i] < nums2[j]) {
@@ -27,7 +27,6 @@ var merge = function(nums1, m, nums2, n) {
     console.log("m", m)
     console.log("j值", j)
     for (j; j < n; j++) {
-
         nums1.pop();
         nums1.splice(m++, 0, nums2[j]);
     }
