@@ -1,0 +1,24 @@
+.nav .logo .sk {
+    position: absolute;
+    top: 18px;
+    left: 185px;
+    height: 27px;
+    border-left: 1px solid #b1191a;
+    padding-left: 10px;
+}
+
+.sk_bd {
+    border-top: 2px solid #b1191a;
+}
+
+.sk_bd ul li {
+    float: left;
+    list-style: none;
+    height: 460px;
+    width: 296px;
+    background-color: pink;
+}
+
+.clear {
+    clear: both;
+}

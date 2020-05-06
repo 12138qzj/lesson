@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>星球大战</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background: url(./images/bg.jpg);
+    }
+    .starwars-demo{/*盒子位置设定*/
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 17em;
+        height: 34em;
+        /* background-color: green; */
+        transform: translate(-50%,-50%);/*上下左右*/
+        perspective: 800px;
+        transform-style: preserve-3d;/*移动产生3D效果*/
+    }
+    .star,.wars{
+        position: absolute;/*绝对定位*/
+    }
+    .star{
+        top:-0.75em;/*向上移动*/
+        animation: star 10s ease-out infinite; /*  动作名 10s 的变速运动*/
+    }
+    @keyframes star {
+        0%{/*开始*/
+            opacity: 0; /*不可见*/
+            transform: scale(1.5);/*变形为1.5倍  属性*/
+        }
+        20%{ /*时间百分比  2s 可见*/
+        opacity: 1; /*可见*/
+
+        }
+        89%{/*89%的时间  回到原来的大小*/
+            opacity: 1;
+            transform: scale(1);
+        }
+        100%{/* 最后回到各自的位置*/
+            opacity: 1;
+            transform: translateZ(-450em); /*Z坐标*/
+        }
+        
+    }
+    .wars{
+        bottom: -0.5em; /**/
+        animation: wars 10s ease-out infinite; 
+    }
+    @keyframes wars {
+        0%{
+            opacity: 0; /*不可见*/
+            transform: scale(1.5);/*变形属性*/
+        }
+        20%{ /*时间百分比*/
+        opacity: 1; /*可见*/
+
+        }
+        89%{
+            opacity: 1;
+            transform: scale(1);
+        }
+        100%{
+            opacity: 1;
+            transform: translateZ(-400em);/*Z坐标*/
+        }
+        
+    }
+    </style>
+</head>
+<body>
+ 
+ <!-- <div class="starwars-demo">
+     <img class="star" src="./image/star.svg"/>
+     <img src="./imgae/star.svg" alt="" class="star">
+     <img src="./image/war.svg" alt="" class="wars">
+ </div>    -->
+
+ <!-- <div class="starwars-demo">
+     <img src="./imgae/star.svg" alt="" class="star">
+     <img src="./image/war.svg" alt="" class="wars">
+
+ </div> -->
+
+ <div class="starwars-demo">
+     <img src="./images/star.svg" alt="" class="star">
+     <img src="./images/wars.svg" alt="" class="wars">
+     <h2 class="byline">
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span>
+     </h2>
+ </div>
+
+</body>
+</html>

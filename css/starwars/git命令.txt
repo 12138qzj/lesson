@@ -1,0 +1,2 @@
+$ mkdir lesson  /* 创建文件夹*/
+$ git init  /*初始化本地仓库*/
