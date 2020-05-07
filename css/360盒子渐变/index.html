@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360前端特效面试</title>
+    <style>
+        .button {
+            position: relative;
+            background-color: #f72359;
+            padding: 1em 2em;
+            border: none;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            outline: none;
+            /*轮廓*/
+            overflow: hidden;
+            border-radius: 100px;
+        }
+        
+         :root {
+            --x: 0px;
+            --y: 0px;
+        }
+        
+        .button::before {
+            /*css4变量定义格式 --size*/
+            --size: 0px;
+            content: '';
+            position: absolute;
+            left: var(--x);
+            top: var(--y);
+            width: var(--size);
+            height: var(--size);
+            /* background-color: pink; */
+            background: radial-gradient(circle closest-side, #4405f7, transparent);
+            transform: translate(-50%, -50%);
+            /*过度效果*/
+            transition: all 0.8 ease;
+        }
+        
+        .button:hover::before {
+            --size: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="button">按钮</button>
+    <script>
+        const btn = document.querySelector('button');
+        btn.addEventListener('mousemove', (event) => {
+            console.log(event.clientX - event.target.offsetLeft, event.clientY - event.target.offsetTop)
+
+            //设置css4变量里的值
+            event.target.style.setProperty('--y', `${event.clientY - event.target.offsetTop}px`);
+            event.target.style.setProperty('--x', `${event.clientX - event.target.offsetLeft}px`);
+            //获取 css4变量里面的 值
+            console.log("value", event.target.style.getPropertyValue('--y'))
+                //--y = event.clientY;
+
+        })
+    </script>
+</body>
+
+</html>
