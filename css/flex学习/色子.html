@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>色子
+
+    </title>
+</head>
+<style>
+    /*九个*/
+    /* .content {
+        display: flex;
+        flex-direction: column;
+        height: 120px;
+        width: 120px;
+        background-color: gray;
+    }
+    
+    .warp {
+        flex: 1;
+        display: flex;
+    }
+    
+    span {
+        flex: 1;
+        display: block;
+        height: 30px;
+        width: 30px;
+        border-radius: 15px;
+        margin: 5px;
+        background-color: pink;
+    } */
+    /*一个 左上角*/
+    
+    .content {
+        display: flex;
+        /*对齐   可与其他配合使用*/
+        /* align-items: center; */
+        /*x轴strat对齐*/
+        align-content: center;
+        /* justify-content: flex-start; */
+        /* justify-content: center; */
+        /* justify-content: flex-end; */
+        /*两端对齐*/
+        /* justify-content: space-between; */
+        /*元素两端间隔相等  相当于将剩余空间 margin*/
+        /* justify-content: space-around; */
+        /*flex 的方式*/
+        /*在列的方向 设置flex*/
+        /* flex-direction: column; */
+        /*列  反向对齐*/
+        /* flex-direction: column-reverse; */
+        /*在行的房=方向  默认值*/
+        /* flex-direction: row; */
+        /*行 反向对齐 reverse：颠倒*/
+        /* flex-direction: row-reverse; */
+        height: 120px;
+        width: 120px;
+        background-color: gray;
+        /*align-items: baseline;*/
+    }
+    
+    span {
+        /* 索取剩余空间:设置flex-grow为1 否则则为0  在子元素里面配置*/
+        /* flex-grow: 1;  和flex:1一样按比例分配剩余空间*/
+        /* flex-shrink  当子元素宽度大于父元素时  收缩到和父元素一样 */
+        /*根据值大小 按比例分配*/
+        /* flex-shrink: 1; */
+        /* flex-basis: auto;设置元素的宽度  该属性遇见width的时候 会覆盖width*/
+        /* flex: flex-grow flex-shrink flex-basis  */
+        /*缩写形式*/
+        /*flex: 0 0 auto;*/
+        display: inline-block;
+        height: 30px;
+        width: 30px;
+        border-radius: 15px;
+        margin: 5px;
+        background-color: pink;
+    }
+</style>
+
+<body>
+    <!-- <div class="content">
+        <div class="warp"><span>1</span><span></span><span></span></div>
+        <div class="warp"><span>1</span><span></span><span></span></div>
+        <div class="warp"><span>1</span><span></span><span></span></div>
+    </div> -->
+    <div class="content">
+        <span>1</span>
+        <span>1</span>
+
+    </div>
+</body>
+
+</html>
