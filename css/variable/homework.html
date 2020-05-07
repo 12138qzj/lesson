@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css变量设置</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+         :root {
+            --bg-color: green;
+            --base-size: 10;
+        }
+        
+        .box {
+            /* 占据90% -10px 宽 */
+            /* width: calc(90% - 10px); */
+            /* height: 100px; */
+            /* background-color: var(--bg-color); */
+            width: calc(var(--base-size) * 10px);
+            height: calc(var(--base-size) * 5px);
+            background-color: var(--bg-color);
+            padding: calc(var(--base-size) * 1px);
+        }
+        /** 正常样式 **/
+        
+        @media (max-width: 500px) {
+            /** 窗口宽度小于500像素的样式 **/
+             :root {
+                --bg-color: green;
+                --base-size: 10*0.8;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        var p = navigator.platform;
+
+        // if (/iPhone|iPod/i.test(navigator.userAgent)) {
+        //     console.log(navigator.userAgent)
+        //     document.documentElement.style.setProperty("--base-size", 10 * 0.8);
+        //     // style.setProperty(`--base-size`, '20');
+        // }
+    </script>
+</body>
+
+</html>
