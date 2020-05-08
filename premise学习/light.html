@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>红绿灯操作</title>
+</head>
+<style>
+    li {
+        margin-top: 10px;
+        height: 100px;
+        width: 100px;
+        background-color: gray;
+        border-radius: 50%;
+        list-style: none;
+    }
+    
+    ul.stop li:nth-child(1) {
+        background-color: red;
+    }
+    
+    ul.warn li:nth-child(2) {
+        background-color: yellow;
+    }
+    
+    ul.pass li:nth-child(3) {
+        background-color: green;
+    }
+</style>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        const ul = document.querySelector('ul')
+        console.log(ul)
+            // setTimeout(function() {
+            //     ul.className = 'pass';
+            //     setTimeout(function() {
+            //         ul.className = 'stop';
+            //         setTimeout(function() {
+            //             ul.className = 'warn';
+            //         }, 1000)
+            //     }, 1000);
+
+        // }, 1000)
+        light();
+        setInterval(() => {
+            light()
+        }, 3000);
+
+        function light() {
+
+
+            let p = function() {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        //Promise 默认有三个状态 
+                        //成功 fulfilled
+                        //失败 rejected
+                        // //处理中 pending
+                        //resolve: 将Promise对象的状态从 Pending(进行中) 变为 Fulfilled(已成功)
+                        //reject: 将Promise对象的状态从 Pending(进行中) 变为 Rejected(已失败)
+                        /*resolve 和 reject 都可以传入任意类型的值作为实参，
+                         表示 Promise 对象成功（ Fulfilled） 和失败（ Rejected） 的值**/
+                        resolve(); //调用该函数 修改Promise的状态，从 Pending(进行中) 变为 Fulfilled(已成功)
+                    }, 1000)
+                })
+
+            }
+            p().then(() => {
+                    // then() Promise成功（resolve）执行的函数
+                    //setTimeout(() => {
+                    ul.className = 'stop'
+                    return p();
+                    //}, 1000)
+
+                }).then(() => {
+                    ul.className = 'pass'
+                    return p();
+                }).then(() => {
+                    ul.className = 'warn'
+                })
+                // P
+                // Promise.catch();失败（reject）执行的函数
+        }
+    </script>
+</body>
+
+</html>
