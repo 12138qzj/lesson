@@ -1,0 +1,37 @@
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script>
+    // http://neteasecloudmusicapi.zhaoboy.com/search?keywords=海阔天空
+    // 1. 原生，自己手动拼接 ? 后面字符串 字符串
+    // 2. axios ？变成了一个对象 {} 
+    // {} 灵活 操作对象 是比 字符串灵活的
+    // https://juejin.im/search?query=js&type=all&user=xxx
+    // query=js&type=all&user=xxx  把 query=js 删掉
+    let params = {
+        query: 'js',
+        type: 'all'
+    }
+    params.user = 'xxx'
+    delete params.query;
+
+    let obj = {
+            keywords: '海阔天空'
+        }
+        // axios 第三方 基于 XMlhttprequest 库
+        // fetch 浏览器原生的 另外一个发请求的api (不是基于XMl)
+    axios({
+            //发送请求  
+            method: 'get',
+            url: 'http://neteasecloudmusicapi.zhaoboy.com/search',
+            params: obj
+        })
+        //发送完成执行此函数
+        .then(function(res) {
+            //获取 从服务器端  返回结果
+            console.log(res.request.response);
+
+        })
+        // 有了一个 url
+        // 有了一个 对象
+        // 对象每一项 key value 按照 url 的规则 拼接到 url 后面
+        // 50%
+</script>
