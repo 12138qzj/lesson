@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D盒子制作</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .minbox {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        left: 50px;
+        top: 60px;
+        transform-style: preserve-3d;
+        transform: rotateX(-10deg) rotateY(-40deg);
+    }
+    
+    .size {
+        position: absolute;
+        border: black solid 1px;
+        width: 100px;
+        height: 100px;
+    }
+    
+    .box {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        margin-left: 42%;
+        margin-top: 35%;
+        /* background-color: lightcoral; */
+    }
+    
+    .minbox .front {
+        /* 前 */
+        transform: translateZ(50px);
+        background-color: #0390A1;
+    }
+    
+    .minbox .rear {
+        /*后*/
+        transform: translateZ(-50px);
+        background-color: #0390A1;
+    }
+    
+    .minbox .left {
+        /*左边*/
+        transform: rotateY(-90deg) translateZ(50px);
+        background-color: #0390A1;
+    }
+    
+    .minbox .right {
+        /*右边*/
+        background-color: #0390A1;
+        transform: rotateY(90deg) translateZ(50px);
+    }
+    
+    .minbox .bottom {
+        /* 底部 */
+        transform: rotateX(-90deg) translateZ(50px);
+        background-color: #0390A1;
+    }
+    
+    .minbox .top {
+        /* 顶部 */
+        position: relative;
+        transform-style: preserve-3d;
+        transform: rotateX(90deg) translateZ(50px);
+        /* background-color: yellow; */
+    }
+    
+    .lid-left {
+        width: 100px;
+        height: 50px;
+        position: absolute;
+        transform-origin: 50% 0%;
+        /* transform: translateY(31px) translateX(-50px) rotateY(54deg) rotateZ(90deg); */
+        transform: translateY(50px) translateX(-50px) rotateY(180deg) rotateZ(90deg);
+        background-color: #0390A1;
+        animation: left 0.3s linear forwards;
+    }
+    
+    .lid-right {
+        width: 100px;
+        height: 50px;
+        position: absolute;
+        background-color: #0390A1;
+        transform-origin: 50% 0%;
+        /* transform: translateY(31px) translateX(50px) rotateY(126deg) rotateZ(90deg); */
+        transform: translateY(50px) translateX(50px) rotateY(0deg) rotateZ(90deg);
+        animation: right 0.3s linear forwards;
+    }
+    
+    @keyframes left {
+        0% {
+            transform: translateY(50px) translateX(-50px) rotateY(180deg) rotateZ(90deg);
+        }
+        100% {
+            transform: translateY(50px) translateX(-50px) rotateY(54deg) rotateZ(90deg);
+        }
+    }
+    
+    @keyframes right {
+        0% {
+            transform: translateY(50px) translateX(50px) rotateY(0deg) rotateZ(90deg);
+        }
+        100% {
+            transform: translateY(50px) translateX(50px) rotateY(126deg) rotateZ(90deg);
+        }
+    }
+</style>
+
+<body>
+    <div class="box">
+        <div class="minbox">
+            <div class="size front"> 前面</div>
+            <div class="size rear"></div>
+            <div class="size left"></div>
+            <div class="size right">GET<br>UDID</div>
+            <div class="size bottom"></div>
+            <div class="size top">
+                <div class="lid-left"></div>
+                <div class="lid-right"></div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
