@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D盒子</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            display: flex;
+            margin: 50% auto;
+            padding: 0 40px;
+            font-size: 0;
+        }
+        
+        .cols {
+            /* height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            /* display: inline-block; */
+            /* -ms-flex-positive: 1; */
+            /* flex-grow: 1; */
+            /*perspective: 1200px; */
+            position: relative;
+            display: inline-block;
+            width: 200px;
+            height: 380px;
+            /* width: 25%; */
+            text-align: center;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            perspective: 1200px;
+        }
+        /* .box-wrapper {
+            display: flex;
+            height: 500px;
+            width: 500px;
+            background-color: pink;
+        } */
+        
+        .box-wrapper {
+            display: inline-block;
+            width: 170px;
+        }
+        
+        .box {
+            width: 170px;
+            height: 380px;
+            padding-top: 50px;
+            box-sizing: border-box;
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+            text-align: center;
+            position: relative;
+            opacity: 1;
+            transform: rotateY(-40deg) rotateX(-4deg) rotateZ(4deg);
+            perspective: 1200px;
+            background-color: pink;
+        }
+        
+        .box .side {
+            /* position: absolute;
+            height: 110px;
+            width: 110px;
+            /* z-index: 38; */
+            /* border: 1px solid #3f515f;
+            background-color: #0390A1;
+            transition: all .25s;
+            transform-style: preserve-3d; */
+            position: absolute;
+            z-index: 38;
+            border: 1px solid #3f515f;
+            background-color: #0390A1;
+            transition: all .25s;
+            transform-style: preserve-3d;
+        }
+        
+        .section-3 .box .left {
+            right: 100%;
+            height: 110px;
+            border-top: 2px solid #3f515f;
+            transform: rotateY(-90deg);
+            transform-origin: right;
+            z-index: 112;
+        }
+        
+        .box .front {
+            left: 0;
+            height: 110px;
+            border-top: 1px solid #3f515f;
+            color: #fff;
+            font-size: 67px;
+            line-height: 120px;
+            transform-origin: right top;
+        }
+        
+        .box .right {
+            left: 100%;
+            padding: 12px 0 0 12px;
+            height: 110px;
+            color: #414859;
+            text-align: left;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 1.2;
+            transform: rotateY(90deg);
+            transform-origin: center;
+            transform-origin: left bottom;
+            font-family: 'Roboto Slab', 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', Arial, sans-serif;
+        }
+        
+        .box .back {
+            position: absolute;
+            z-index: 37;
+            left: 0;
+            height: 110px;
+            transform: translateZ(-120px);
+        }
+        
+        .box .top {
+            position: absolute;
+            top: -120px;
+            left: 0;
+            box-sizing: border-box;
+            background-color: transparent;
+            font-size: 0;
+            transform: rotateX(90deg);
+            transform-origin: bottom;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cols">
+        <div class="box-wrapper">
+            <!-- <p class="tool-desc">让测试用户快速获取 UDID 并发送给开发者</p>
+            <div class="brace"><i class="icon-brace-box"></i></div> -->
+            <div class="box">
+                <div class="side left"> 左边</div>
+                <div class="side top">
+                    <!-- <div class="lid-left"></div>
+                    <div class="lid-right"></div> -->
+                </div>
+
+                <div class="side right">GET<br>UDID</div>
+                <div class="side back"> 后面</div>
+                <div class="side front"> 前面<i class="icon-udid"></i></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

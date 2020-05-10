@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        max-width: 100%;
+        min-width: 100%;
+        height: 100%;
+        /* background-size: cover; */
+        /* background-repeat: no-repeat; */
+        /* background-attachment: fixed; */
+        /* background-size: 100% 100%; */
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    li {
+        list-style: none;
+    }
+    
+    .box {
+        width: 200px;
+        height: 200px;
+        /* background-size: cover; */
+        /* background-repeat: no-repeat; */
+        /* background-attachment: fixed; */
+        /* background-size: 100% 100%; */
+        position: absolute;
+        margin-left: 42%;
+        margin-top: 22%;
+        background-color: lightcoral;
+    }
+    
+    .minbox {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        left: 50px;
+        top: 30px;
+        transform-style: preserve-3d;
+        transform: rotateX(-10deg) rotateY(-40deg);
+    }
+    
+    .minbox li {
+        border: black solid 1px;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    .minbox li:nth-child(1) {
+        /* 前 */
+        transform: translateZ(50px);
+        background-color: #0390A1;
+    }
+    
+    .minbox li:nth-child(2) {
+        /*后*/
+        transform: translateZ(-50px);
+        background-color: #0390A1;
+    }
+    
+    .minbox li:nth-child(3) {
+        /*左边*/
+        transform: rotateY(-90deg) translateZ(50px);
+        background-color: #0390A1;
+    }
+    
+    .minbox li:nth-child(4) {
+        /*右边*/
+        background-color: #0390A1;
+        transform: rotateY(-90deg) translateZ(-50px);
+    }
+    
+    .minbox li:nth-child(5) {
+        /* 底部 */
+        transform: rotateX(-90deg) translateZ(50px);
+        background-color: #0390A1;
+    }
+    /* @keyframes move {
+        0% {
+            -webkit-transform: rotateX(13deg) rotateY(0deg);
+        }
+        100% {
+            -webkit-transform: rotateX(13deg) rotateY(360deg);
+        } 
+}*/
+</style>
+
+<body>
+    <div class="box">
+        <ul class="minbox">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <!--<li>6</li> -->
+        </ul>
+    </div>
+</body>
+
+</html>

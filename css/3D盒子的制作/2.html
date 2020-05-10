@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D盒子</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .cols {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .box {
+            position: relative;
+            width: 200px;
+            height: 500px;
+            /* background-color: pink; */
+            transform-style: preserve-3d;
+            perspective: 1200px;
+            transform: rotateY(-40deg) rotateX(-4deg) rotateZ(4deg);
+        }
+        
+        .box .side {
+            height: 100px;
+            width: 100px;
+            display: inline-block;
+            background-color: #0390A1;
+            border: black solid 1px;
+        }
+        
+        .box .left {
+            position: absolute;
+            top: 240px;
+            left: 1px;
+            transform-origin: top left;
+            transform: translate3d(0, 0, -18px) rotateY(90deg);
+        }
+        
+        .box .top {
+            position: absolute;
+            left: 20px;
+            transform: rotateY(-90deg);
+        }
+        
+        .box .right {
+            position: absolute;
+            left: 101px;
+            top: 240px;
+            transform-origin: top left;
+            transform: translate3d(0, 0, 0) rotateY(90deg);
+        }
+        
+        .box .back {
+            position: absolute;
+            left: -6px;
+            top: 240px;
+            transform-origin: top right;
+            transform: translate3d(5px, 0, -100px) rotateY(-10deg);
+        }
+        
+        .box .front {
+            position: absolute;
+            top: 240px;
+            left: 0;
+            /* transform-origin: top left; */
+            /* transform: rotateY(55deg); */
+            transform-origin: right top;
+            transform: rotateY(-10deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cols">
+        <div class="box-wrapper">
+            <!-- <p class="tool-desc">让测试用户快速获取 UDID 并发送给开发者</p>
+            <div class="brace"><i class="icon-brace-box"></i></div> -->
+            <div class="box">
+                <div class="side back"> 后面</div>
+                <div class="side left"> 左边</div>
+                <div class="side top">
+                    顶部
+                    <!-- <div class="lid-left"></div>
+                    <div class="lid-right"></div> -->
+                </div>
+
+                <div class="side right">GET<br>UDID</div>
+
+                <div class="side front"> 前面<i class="icon-udid"></i></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

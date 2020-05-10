@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3</title>
+</head>
+
+<style>
+    .cols {
+        position: relative;
+        display: inline-block;
+        width: 25%;
+        text-align: center;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        perspective: 1200px;
+    }
+    
+    .box-wrapper {
+        display: inline-block;
+        width: 170px;
+    }
+    
+    .tool-desc {
+        margin: 0 auto 18px;
+        width: 90%;
+        height: 100px;
+        text-align: left;
+        font-size: 18px;
+        transform: translateY(50px);
+    }
+    
+    .box {
+        z-index: 10;
+        margin-top: 100px;
+        margin-left: -68px;
+        text-align: center;
+        font-size: 0;
+        opacity: 0;
+        transition: all .3s;
+        transform: translateY(-300px) rotateY(-36deg) rotateX(-15deg) rotateZ(10deg);
+        transform-style: preserve-3d;
+        -webkit-backface-visibility: hidden;
+    }
+</style>
+
+<body>
+    <div class="cols">
+        <div class="box-wrapper box-opend">
+            <p class="tool-desc">让测试用户快速获取 UDID 并发送给开发者</p>
+            <div class="brace"><i class="icon-brace-box"></i></div>
+            <div class="box">
+                <div class="side left"></div>
+                <div class="side top">
+                    <div class="lid-left"></div>
+                    <div class="lid-right"></div>
+                </div>
+                <div class="side front"><i class="icon-udid"></i></div>
+                <div class="side right">GET<br>UDID</div>
+                <div class="side back"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
