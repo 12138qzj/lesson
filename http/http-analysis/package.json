@@ -1,0 +1,15 @@
+{
+  "name": "http-analysis",
+  "version": "1.0.0",
+  "description": "知识点 \r     resquest 和 response之间的关系\r         N:1关系\r     HTTP 网络通信协议 TCP/IP  有7层模型",
+  "main": "http-server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.11.0"
+  }
+}
