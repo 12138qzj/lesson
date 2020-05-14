@@ -1,0 +1,23 @@
+<script>
+    function test() {
+        let num = 0;
+
+        function test1() {
+            //debugger;
+            console.log('num', num++)
+        }
+        return test1;
+    }
+    var fn = test();
+    fn();
+    fn();
+    fn();
+
+    //使用var=1  全部都是 6
+    // 使用块级定义方式 let i=1 就是i互不干扰 每一个块级是兄弟级的
+    for (let i = 1; i <= 5; i++) {
+        setTimeout(function timer() {
+            console.log(i);
+        }, 1000)
+    }
+</script>
