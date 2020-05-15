@@ -1,0 +1,48 @@
+<script>
+    /**
+     * @param {number[]} nums
+     */
+
+    let arr1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    let res = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    var Solution = function(nums) {
+        this.nums = nums;
+        return this.nums;
+    };
+
+    /**
+     * Resets the array to its original configuration and return it.
+     * @return {number[]}
+     */
+    Solution.prototype.reset = function() {
+        return this.nums;
+    };
+
+    /**
+     * Returns a random shuffling of the array.
+     * @return {number[]}
+     */
+    Solution.prototype.shuffle = function() {
+        let array = [];
+        Object.assign(array, this.nums);
+        array.sort((a, b) => Math.random * 0.5);
+        console.log(this.nums);
+        console.log(array);
+        return array;
+    };
+
+    /**
+     * Your Solution object will be instantiated and called as such:
+     * var obj = new Solution(nums)
+     * var param_1 = obj.reset()
+     * var param_2 = obj.shuffle()
+     */
+    var fn = new Solution(arr1)
+    console.log(fn.prototype);
+    console.log(Solution.prototype)
+        // var bkb = []
+        // Object.assign(bkb, arr);
+        // bkb.sort((a, b) => b - a);
+        // console.log(bkb);
+        // console.log(arr)
+</script>
