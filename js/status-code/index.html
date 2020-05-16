@@ -8,29 +8,40 @@
 </head>
 
 <body>
-    <ul id="users"></ul>
+    <!-- 
+    * 前端 服务器在./3.js
+    -->
     首页部分
-
+    <ul id="users"></ul>
     <script>
         window.onload = function() {
 
-            const users = localStorage.getItem('users');
+            console.log("local", localStorage.getItem('user'));
+
+            let user = JSON.parse(localStorage.getItem('user'));
             const uluser = document.querySelector('#users');
-            if (users) {
-                uluser.innerHTML = users.map(user =>
-                    `
+            console.log("userwai", user);
+
+            if (user != null) {
+                console.log("user", user)
+                uluser.innerHTML = user.map(user =>
+                        `
                     <li>
                         ${user.username}-${user.place}
                     </li>
                     `
-                )
-            }
+                    )
+                    // localStorage.clear();
 
-            fetch('./users')
+            }
+            console.log("用户");
+            fetch('/users')
                 .then(data => data.json())
                 .then(data => {
                     // localStorage.setItem('user', data) 这个是json
                     //缓存
+                    console.log("用户data", data);
+
                     localStorage.setItem('user', JSON.stringify(data)) //需要存储字符串
 
                     uluser.innerHTML = data.map(user =>
@@ -41,6 +52,10 @@
                         `
                     )
                 })
+
+
+
+
         }
     </script>
 </body>

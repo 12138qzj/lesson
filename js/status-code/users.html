@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户页</title>
+</head>
+
+<body>
+
+    <ul id="users"></ul>
+    <script>
+        window.onload = function() {
+
+            const users = localStorage.getItem('users');
+            const uluser = document.querySelector('#users');
+            if (users) {
+                uluser.innerHTML = users.map(user =>
+                    `
+                    <li>
+                        ${user.username}-${user.place}
+                    </li>
+                    `
+                )
+                localStorage.clear();
+
+            } else {
+                fetch('./users')
+                    .then(data => data.json())
+                    .then(data => {
+                        // localStorage.setItem('user', data) 这个是json
+                        //缓存
+                        localStorage.setItem('user', JSON.stringify(data)) //需要存储字符串
+
+                        uluser.innerHTML = data.map(user =>
+                            `
+                        <li>
+                            ${user.username}-${user.place}
+                        </li>
+                        `
+                        )
+                    })
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>
