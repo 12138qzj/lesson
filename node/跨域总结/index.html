@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="">
+<img src="" alt="">
+<!-- 引入axios 请求的第三方库 -->
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script>
+    document.cookie = "abc=123"; //写入cookie
+    async function request() {
+
+
+        let res = await axios({
+            withCredentials: true,
+            // header: {
+            //     'X-Requested-With': 'XMLHttpRequest'
+            // },
+            url: 'http://localhost:9090/api',
+            method: 'POST',
+            data: {
+                name: "123",
+                pwd: 789
+            }
+        });
+        // await (res => {
+        //     console.log(res);
+
+        console.log(res.data);
+        // })();
+
+
+    }
+    console.log(
+        request())
+</script>
